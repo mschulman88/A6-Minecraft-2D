@@ -57,7 +57,7 @@ var firstGuess = '';
 var secondGuess = '';
 var count = 0;
 var previousTarget = null;
-var delay = 1500;
+var delay = 1000;
 
 const game = document.getElementById('game');
 const grid = document.createElement('section');
@@ -86,11 +86,11 @@ grid.addEventListener('click', function (event) {
     if (count < 2) {
         count++;
         if (count === 1) {
-            firstGuess = clicked.dataset.name;
-            clicked.classList.add('selected');
+            firstGuess = clicked.parentNode.dataset.name;
+            clicked.parentNode.classList.add('selected');
         } else {
-            secondGuess = clicked.dataset.name;
-            clicked.classList.add('selected');
+            secondGuess = clicked.parentNode.dataset.name;
+            clicked.parentNode.classList.add('selected');
         }
         if (firstGuess !== '' && secondGuess !== '') {
             if (firstGuess === secondGuess) {
