@@ -57,6 +57,7 @@ var firstGuess = '';
 var secondGuess = '';
 var count = 0;
 var previousTarget = null;
+var delay = 1500;
 
 const game = document.getElementById('game');
 const grid = document.createElement('section');
@@ -67,8 +68,14 @@ pokemonGrid.forEach(item =>{
     const card = document.createElement('div');
     card.classList.add('card');
     card.dataset.name = item.name;
+    const front = document.createElement('div');
+    front.classList.add('front');
+    const back = document.createElement('div');
+    back.classList.add('back');
     card.style.backgroundImage = `url(${item.img})`;
     grid.appendChild(card);
+    card.appendChild(front);
+    card.appendChild(back);
 });
 
 grid.addEventListener('click', function (event) {
@@ -87,10 +94,10 @@ grid.addEventListener('click', function (event) {
         }
         if (firstGuess !== '' && secondGuess !== '') {
             if (firstGuess === secondGuess) {
-                match();
-                resetGuesses();
+                setTimeout(match, delay);
+                setTimeout(resetGuesses, delay);
             } else {
-                resetGuesses();
+                setTimeout(resetGuesses, delay);
             }
         }
         previousTarget = clicked;  
