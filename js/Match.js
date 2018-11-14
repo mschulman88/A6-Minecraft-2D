@@ -56,6 +56,7 @@ let pokemonGrid = pokemon.concat(pokemon).sort(function() {
 var firstGuess = '';
 var secondGuess = '';
 var count = 0;
+var previousTarget = null;
 
 const game = document.getElementById('game');
 const grid = document.createElement('section');
@@ -70,14 +71,47 @@ pokemonGrid.forEach(item =>{
     grid.appendChild(card);
 });
 
-
-grid.addEventListener('click', function (e) {
-    let clicked = e.target;
-    if (clicked.nodeName === 'SECTION') { 
-        return; 
+grid.addEventListener('click', function (event) {
+    var clicked = event.target;
+    if (clicked.nodeName === 'SECTION' || clicked === previousTarget || clicked.parentNode.classList.contains('selected') || clicked.parentNode.classList.contains('match')) {
+        return;
     }
     if (count < 2) {
         count++;
-        clicked.classList.add('selected');
+        if (count === 1) {
+            firstGuess = clicked.dataset.name;
+            clicked.classList.add('selected');
+        } else {
+            secondGuess = clicked.dataset.name;
+            clicked.classList.add('selected');
+        }
+        if (firstGuess !== '' && secondGuess !== '') {
+            if (firstGuess === secondGuess) {
+                match();
+                resetGuesses();
+            } else {
+                resetGuesses();
+            }
+        }
+        previousTarget = clicked;  
     }
 });
+
+var match = function match() {
+    var selected = document.querySelectorAll('.selected');
+    selected.forEach(function (card) {
+        card.classList.add('match');
+    });
+};
+
+var resetGuesses = function resetGuesses() {
+    firstGuess = '';
+    secondGuess = '';
+    count = 0;
+    previousTarget = null;
+  
+    var selected = document.querySelectorAll('.selected');
+    selected.forEach(function (card) {
+        card.classList.remove('selected');
+    });
+};
