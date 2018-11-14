@@ -49,12 +49,20 @@ const pokemon = [
     },
 ];
 
+let pokemonGrid = pokemon.concat(pokemon).sort(function() {
+    return 0.5 - Math.random();
+});
+
+var firstGuess = '';
+var secondGuess = '';
+var count = 0;
+
 const game = document.getElementById('game');
 const grid = document.createElement('section');
 grid.setAttribute('class', 'grid');
 game.appendChild(grid);
 
-pokemon.forEach(item =>{
+pokemonGrid.forEach(item =>{
     const card = document.createElement('div');
     card.classList.add('card');
     card.dataset.name = item.name;
@@ -63,11 +71,13 @@ pokemon.forEach(item =>{
 });
 
 
-
-// pokemon.forEach(item => {
-//     const card = document.createElement('div');
-//     card.classList.add('card');
-//     card.dataset.name = item.name;
-//     card.style.backgroundImage = `url(${item.img})`;
-//     grid.appendChild(card);
-// });
+grid.addEventListener('click', function (e) {
+    let clicked = e.target;
+    if (clicked.nodeName === 'SECTION') { 
+        return; 
+    }
+    if (count < 2) {
+        count++;
+        clicked.classList.add('selected');
+    }
+});
