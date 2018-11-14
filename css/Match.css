@@ -37,13 +37,16 @@ body {
     position: absolute;
     backface-visibility: hidden;
 }
+.front {
+    background: url('../img/Pokeball.png') no-repeat center center / contain;
+}
 
 .back {
     transform: rotateY(180deg);
-    background-color: white;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
+    background-color: white;
 }
 
 .selected {
@@ -51,5 +54,5 @@ body {
 }
 
 .match {
-    background: white !important;
+    background: #6589F9 !important;
 }
