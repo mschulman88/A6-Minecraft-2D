@@ -6,6 +6,10 @@ match.count = 0;
 match.previousTarget = null;
 match.delay = 1000;
 match.moves = 0;
+match.second = 0, 
+match.minute = 0;
+match.timer = document.querySelector(".timer");
+match.interval;
 
 
 $(document).ready(function(){ 
@@ -93,6 +97,7 @@ match.initGrid = function (){
 match.init = function(){
     match.initGrid();
     match.bindClick();
+    match.startTimer();
 }
 
 match.bindClick = function(){
@@ -156,7 +161,18 @@ match.moveCounter = function(){
 
     if (match.moves > 8 && match.moves < 12){
         ala.style.visibility = "collapse";
-    } else if (moves > 13){
+    } else if (match.moves > 13){
         kad.style.visibility = "collapse";
     }
 };
+
+match.startTimer = function(){
+    match.interval = setInterval(function(){
+        match.timer.innerHTML = match.minute+"mins "+match.second+"secs";
+        match.second++;
+        if(match.second == 60){
+            match.minute++;
+            match.second = 0;
+        }
+    },1000);
+}

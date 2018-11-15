@@ -6,7 +6,8 @@
 
 body {
   margin: 20px 0;
-  background: #6589F9;
+  background-image: url("https://i.pinimg.com/originals/ca/fe/c2/cafec2809887a1c37c83d9ebbc953252.jpg");
+  background-size: contain;
   text-align: center;
 }
 
