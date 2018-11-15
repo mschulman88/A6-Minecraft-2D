@@ -1,124 +1,147 @@
-const pokemon = [
-    {
-        'name': "Bulbasaur",
-        'img': "img/Bulbasaur.png",
-    },
-    {
-        'name': "Charmander",
-        'img': "img/Charmander.png",
-    },
-    {
-        'name': "Ditto",
-        'img': "img/Ditto.png",
-    },
-    {
-        'name': "Eevee",
-        'img': "img/Eevee.png",
-    },
-    {
-        'name': "Gengar",
-        'img': "img/Gengar.png",
-    },
-    {
-        'name': "Gyarados",
-        'img': "img/Gyarados.png",
-    },
-    {
-        'name': "Jigglypuff",
-        'img': "img/Jigglypuff.png",
-    },
-    {
-        'name': "Mew",
-        'img': "img/Mew.png",
-    },
-    {
-        'name': "Pikachu",
-        'img': "img/Pikachu.png",
-    },
-    {
-        'name': "Psyduck",
-        'img': "img/Psyduck.png",
-    },
-    {
-        'name': "Snorlax",
-        'img': "img/Snorlax.png",
-    },
-    {
-        'name': "Squirtle",
-        'img': "img/Squirtle.png",
-    },
-];
+var match = {};
 
-let pokemonGrid = pokemon.concat(pokemon).sort(function() {
-    return 0.5 - Math.random();
+match.firstGuess = '';
+match.secondGuess = '';
+match.count = 0;
+match.previousTarget = null;
+match.delay = 1000;
+
+
+$(document).ready(function(){ 
+    match.init();
 });
 
-var firstGuess = '';
-var secondGuess = '';
-var count = 0;
-var previousTarget = null;
-var delay = 1000;
+match.initGrid = function (){
+    var pokemon = [
+        {
+            'name': "Bulbasaur",
+            'img': "img/Bulbasaur.png",
+        },
+        {
+            'name': "Charmander",
+            'img': "img/Charmander.png",
+        },
+        {
+            'name': "Ditto",
+            'img': "img/Ditto.png",
+        },
+        {
+            'name': "Eevee",
+            'img': "img/Eevee.png",
+        },
+        {
+            'name': "Gengar",
+            'img': "img/Gengar.png",
+        },
+        {
+            'name': "Gyarados",
+            'img': "img/Gyarados.png",
+        },
+        {
+            'name': "Jigglypuff",
+            'img': "img/Jigglypuff.png",
+        },
+        {
+            'name': "Mew",
+            'img': "img/Mew.png",
+        },
+        {
+            'name': "Pikachu",
+            'img': "img/Pikachu.png",
+        },
+        {
+            'name': "Psyduck",
+            'img': "img/Psyduck.png",
+        },
+        {
+            'name': "Snorlax",
+            'img': "img/Snorlax.png",
+        },
+        {
+            'name': "Squirtle",
+            'img': "img/Squirtle.png",
+        },
+    ];
+    
+    var pokemonGrid = pokemon.concat(pokemon).sort(function() {
+        return 0.5 - Math.random();
+    });
 
-const game = document.getElementById('game');
-const grid = document.createElement('section');
-grid.setAttribute('class', 'grid');
-game.appendChild(grid);
+    var game = document.getElementById('game');
+    var grid = document.createElement('section');
+    grid.setAttribute('class', 'grid');
+    grid.setAttribute('id', 'grid');
+    game.appendChild(grid);
 
-pokemonGrid.forEach(item =>{
-    const card = document.createElement('div');
-    card.classList.add('card');
-    card.dataset.name = item.name;
-    const front = document.createElement('div');
-    front.classList.add('front');
-    const back = document.createElement('div');
-    back.classList.add('back');
-    card.style.backgroundImage = `url(${item.img})`;
-    grid.appendChild(card);
-    card.appendChild(front);
-    card.appendChild(back);
-});
+    pokemonGrid.forEach(item =>{
+        var card = document.createElement('div');
+        card.classList.add('card');
+        card.dataset.name = item.name;
+        var front = document.createElement('div');
+        front.classList.add('front');
+        var back = document.createElement('div');
+        back.classList.add('back');
+        card.style.backgroundImage = `url(${item.img})`;
+        grid.appendChild(card);
+        card.appendChild(front);
+        card.appendChild(back);
+    });
 
-grid.addEventListener('click', function (event) {
+}
+
+match.init = function(){
+    match.initGrid();
+    match.bindClick();
+}
+
+match.bindClick = function(){
+    var grid = document.getElementById("grid");
+    grid.addEventListener("click", match.testMatch);
+};
+
+match.testMatch = function (event){
     var clicked = event.target;
-    if (clicked.nodeName === 'SECTION' || clicked === previousTarget || clicked.parentNode.classList.contains('selected') || clicked.parentNode.classList.contains('match')) {
+
+    if (clicked.nodeName === 'SECTION' || clicked === match.previousTarget || clicked.parentNode.classList.contains('selected') || clicked.parentNode.classList.contains('match')) {
         return;
     }
-    if (count < 2) {
-        count++;
-        if (count === 1) {
-            firstGuess = clicked.parentNode.dataset.name;
+    if (match.count < 2) {
+        match.count++;
+        if (match.count === 1) {
+            match.firstGuess = clicked.parentNode.dataset.name;
             clicked.parentNode.classList.add('selected');
         } else {
-            secondGuess = clicked.parentNode.dataset.name;
+            match.secondGuess = clicked.parentNode.dataset.name;
             clicked.parentNode.classList.add('selected');
         }
-        if (firstGuess !== '' && secondGuess !== '') {
-            if (firstGuess === secondGuess) {
-                setTimeout(match, delay);
-                setTimeout(resetGuesses, delay);
+        if (match.firstGuess !== '' && match.secondGuess !== '') {
+            if (match.firstGuess === match.secondGuess) {
+                setTimeout(match.matchPass, match.delay);
+                setTimeout(match.resetGuesses, match.delay);
             } else {
-                setTimeout(resetGuesses, delay);
+                setTimeout(match.resetGuesses, match.delay);
             }
         }
-        previousTarget = clicked;  
+        match.previousTarget = clicked;  
     }
-});
-
-var match = function match() {
+};
+    
+match.matchPass = function(){
     var selected = document.querySelectorAll('.selected');
     selected.forEach(function (card) {
         card.classList.add('match');
-    });
+        card.classList.add('hidden');
+    })
 };
 
-var resetGuesses = function resetGuesses() {
-    firstGuess = '';
-    secondGuess = '';
-    count = 0;
-    previousTarget = null;
+match.resetGuesses = function(){
+    match.firstGuess = '';
+    match.secondGuess = '';
+    match.count = 0;
+    match.previousTarget = null;
   
     var selected = document.querySelectorAll('.selected');
     selected.forEach(function (card) {
         card.classList.remove('selected');
-    });
+    })
 };
