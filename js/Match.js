@@ -5,6 +5,7 @@ match.secondGuess = '';
 match.count = 0;
 match.previousTarget = null;
 match.delay = 1000;
+match.moves = 0;
 
 
 $(document).ready(function(){ 
@@ -80,8 +81,8 @@ match.initGrid = function (){
         var front = document.createElement('div');
         front.classList.add('front');
         var back = document.createElement('div');
+        back.style.backgroundImage = `url(${item.img})`;
         back.classList.add('back');
-        card.style.backgroundImage = `url(${item.img})`;
         grid.appendChild(card);
         card.appendChild(front);
         card.appendChild(back);
@@ -115,6 +116,7 @@ match.testMatch = function (event){
             clicked.parentNode.classList.add('selected');
         }
         if (match.firstGuess !== '' && match.secondGuess !== '') {
+            match.moveCounter();
             if (match.firstGuess === match.secondGuess) {
                 setTimeout(match.matchPass, match.delay);
                 setTimeout(match.resetGuesses, match.delay);
@@ -144,4 +146,17 @@ match.resetGuesses = function(){
     selected.forEach(function (card) {
         card.classList.remove('selected');
     })
+};
+
+match.moveCounter = function(){    
+    match.moves++;    
+    document.getElementById("moves").innerHTML = match.moves;
+    var ala = document.getElementById('star3');
+    var kad = document.getElementById('star2');
+
+    if (match.moves > 8 && match.moves < 12){
+        ala.style.visibility = "collapse";
+    } else if (moves > 13){
+        kad.style.visibility = "collapse";
+    }
 };
