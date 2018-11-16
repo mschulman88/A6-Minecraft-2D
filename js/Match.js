@@ -15,7 +15,10 @@ match.timer = document.querySelector(".timer");
 match.interval;
 
 // MODAL VARIABLES
-match.correctMatches;
+match.correctMatches = document.getElementsByClassName("match");;
+match.modal = document.getElementById("modal")
+// match.starsList = document.querySelectorAll(".star");
+match.closeicon = document.querySelector(".close");
 
 
 $(document).ready(function(){ 
@@ -26,12 +29,13 @@ match.init = function(){
     match.initGrid();
     match.bindClick();
     match.startTimer();
-    clearInterval(interval);
+    // clearInterval(match.interval);
 }
 
 match.bindClick = function(){
     var grid = document.getElementById("grid");
     grid.addEventListener("click", match.testMatch);
+    grid.addEventListener("click",gameComplete);
 };
 
 match.initGrid = function (){
@@ -132,7 +136,6 @@ match.testMatch = function (event){
         if (match.firstGuess !== '' && match.secondGuess !== '') {
             match.moveCounter();
             if (match.firstGuess === match.secondGuess) {
-                match.correctMatches++;
                 setTimeout(match.matchPass, match.delay);
                 setTimeout(match.resetGuesses, match.delay);
             } else {
@@ -149,6 +152,7 @@ match.matchPass = function(){
         card.classList.add('match'); //combine
         card.classList.add('hidden');
     })
+    match.gameComplete();
 };
 
 match.resetGuesses = function(){
@@ -185,4 +189,25 @@ match.startTimer = function(){
             match.second = 0;
         }
     },1000);
+}
+
+match.gameComplete = function(){
+    if (match.correctMatches.length > 22){
+        clearInterval(match.interval);
+        finalTime = match.timer.innerHTML;
+
+        // show congratulations modal
+        match.modal.classList.add("show");
+
+        // declare star rating variable
+        var starRating = document.querySelector(".stars").innerHTML;
+
+        //showing move, rating, time on modal
+        document.getElementById("finalMove").innerHTML = match.moves;
+        document.getElementById("starRating").innerHTML = starRating;
+        document.getElementById("totalTime").innerHTML = finalTime;
+
+        //closeicon on modal
+        closeModal();
+    };
 }
