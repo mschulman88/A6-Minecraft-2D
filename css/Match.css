@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.header {
+    max-width: 100%;
+}
+
 body {
   margin: 20px 0;
   background-image: url("https://i.pinimg.com/originals/ca/fe/c2/cafec2809887a1c37c83d9ebbc953252.jpg");
@@ -11,57 +15,9 @@ body {
   text-align: center;
 }
 
-.grid {
-  max-width: 960px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-
-.card {
-    position: relative;
-    transition: all .4s linear;
-    transform-style: preserve-3d;
-    margin: 5px;
-    background-size: contain;
-  }
-  
-.card,
-.back,
-.front {
-    height: 150px;
-    width: 150px;
-}
-  
-.back,
-.front {
-    position: absolute;
-    backface-visibility: hidden;
-}
-.front {
-    background: url('../img/Pokeball.png') no-repeat center center / contain;
-}
-
-.back {
-    transform: rotateY(180deg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-    /* background-color: white; */
-}
-
-.selected {
-    transform: rotateY(180deg);
-}
-
-.match {
-    background: #6589F9 !important;
-}
-
-.hidden {
-    visibility: hidden;
-}
+/* ------------------------------- */
+/* ----- SCORE PANEL STYLING ----- */
+/* ------------------------------- */
 
 .score-panel {
 	text-align: center;
@@ -103,4 +59,60 @@ body {
 .timer {
 	display: inline-block;
 	margin: 0 1rem;
+}
+
+/* ------------------------------- */
+/* ----- CARD & GRID STYLING ----- */
+/* ------------------------------- */
+
+.grid {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.card {
+    position: relative;
+    transition: all .5s linear;
+    transform-style: preserve-3d;
+    margin: 5px;
+    /* background-size: contain; */
+  }
+  
+.card,
+.back,
+.front {
+    height: 150px;
+    width: 150px;
+}
+  
+.back,
+.front {
+    position: absolute;
+    backface-visibility: hidden;
+}
+.front {
+    background: url('../img/Pokeball.png') no-repeat center center / contain;
+}
+
+.back {
+    transform: rotateY(180deg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* background-color: white; */
+}
+
+.selected {
+    transform: rotateY(180deg);
+}
+
+/* .match {
+    background: #6589F9 !important;
+} */
+
+.hidden {
+    visibility: hidden;
 }

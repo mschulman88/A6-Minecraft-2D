@@ -10,6 +10,7 @@ match.second = 0,
 match.minute = 0;
 match.timer = document.querySelector(".timer");
 match.interval;
+match.correctMatches;
 
 
 $(document).ready(function(){ 
@@ -108,8 +109,11 @@ match.bindClick = function(){
 match.testMatch = function (event){
     var clicked = event.target;
 
-    if (clicked.nodeName === 'SECTION' || clicked === match.previousTarget || clicked.parentNode.classList.contains('selected') || clicked.parentNode.classList.contains('match')) {
-        return;
+    if (clicked.nodeName === 'SECTION' 
+        || clicked === match.previousTarget 
+        || clicked.parentNode.classList.contains('selected') 
+        || clicked.parentNode.classList.contains('match')) {
+            return;
     }
     if (match.count < 2) {
         match.count++;
@@ -123,6 +127,7 @@ match.testMatch = function (event){
         if (match.firstGuess !== '' && match.secondGuess !== '') {
             match.moveCounter();
             if (match.firstGuess === match.secondGuess) {
+                match.correctMatches++;
                 setTimeout(match.matchPass, match.delay);
                 setTimeout(match.resetGuesses, match.delay);
             } else {
@@ -136,7 +141,7 @@ match.testMatch = function (event){
 match.matchPass = function(){
     var selected = document.querySelectorAll('.selected');
     selected.forEach(function (card) {
-        card.classList.add('match');
+        card.classList.add('match'); //combine
         card.classList.add('hidden');
     })
 };

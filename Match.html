@@ -16,11 +16,11 @@
 
     </head>
     <body>
-        <!-- Page Title -->
+        <!-- PAGE TITLE -->
         <header>
-            Who's That Pokemon!?
+            <img class="header" src="./img/title.png">
         </header>
-        <!-- TOP PANEL FIX FIX FIX FIX FIX FIX FIX FIX -->
+        <!-- SCORE PANEL FIX FIX FIX FIX FIX FIX FIX FIX -->
         <div class = "score-panel">
             <div class="stars">
                 <div class="star1" id="star1"></div>
@@ -32,15 +32,15 @@
 
             <div class="timer"></div>
 
-            <div class="restart" onclick=startGame()>
+            <div class="restart" id="restart">
                 <i class="">RESTART</i>
             </div>
         </div>
 
-        <!-- Game Wrapper -->
+        <!-- GAME WRAPPER -->
         <div id="game"></div>
 
-        <!-- Modal -->
+        <!-- MODAL WRAPPER -->
         <div id="modal-wrapper" style="display:none;">
 
         </div>
@@ -49,7 +49,7 @@
         <!-- jQuery first, then Bootstrap JS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <!-- My JS -->
+        <!-- MY JS -->
         <script src="./js/Match.js"></script>
     </body>
 </html>
