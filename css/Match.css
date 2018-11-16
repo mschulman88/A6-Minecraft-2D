@@ -34,26 +34,26 @@ body {
 	/* margin: 0 5px 0 0; */
 }
 
-.star1, 
-.star2, 
-.star3 {
+#star1, 
+#star2, 
+#star3 {
     height: 75px;
     width: 75px;
     display: inline-block;
     max-width: 100%;
 }
 
-.star1 {
+#star1 {
     background-image: url("../img/Abra.png");
     background-size: contain;
 }
 
-.star2 {
+#star2 {
     background-image: url("../img/Kadabra.png");
     background-size: contain;
 }
 
-.star3 {
+#star3 {
     background-image: url("../img/Alakazam.png");
     background-size: contain;
 }

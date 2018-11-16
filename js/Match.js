@@ -1,15 +1,20 @@
 var match = {};
 
+// MATCH VARIABLES
 match.firstGuess = '';
 match.secondGuess = '';
 match.count = 0;
 match.previousTarget = null;
 match.delay = 1000;
 match.moves = 0;
+
+// TIMER VARIABLES
 match.second = 0, 
 match.minute = 0;
 match.timer = document.querySelector(".timer");
 match.interval;
+
+// MODAL VARIABLES
 match.correctMatches;
 
 
