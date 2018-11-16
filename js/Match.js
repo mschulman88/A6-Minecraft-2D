@@ -173,7 +173,7 @@ match.moveCounter = function(){
 
 match.startTimer = function(){
     match.interval = setInterval(function(){
-        match.timer.innerHTML = match.minute+"mins "+match.second+"secs";
+        match.timer.innerHTML = match.minute+" min "+match.second+" secs";
         match.second++;
         if(match.second == 60){
             match.minute++;
