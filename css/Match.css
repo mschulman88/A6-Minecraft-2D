@@ -72,7 +72,7 @@ body {
 
 #moves,
 #timer {
-    background-color: blue;
+    background-color: #3568be;
     padding: 5px;
     border-radius: 15%;
 }
@@ -150,3 +150,7 @@ body {
 .hidden {
     visibility: hidden;
 }
+
+/* ------------------------------- */
+/* -----    MODAL STYLING    ----- */
+/* ------------------------------- */

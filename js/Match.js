@@ -17,6 +17,18 @@ $(document).ready(function(){
     match.init();
 });
 
+match.init = function(){
+    match.initGrid();
+    match.bindClick();
+    match.startTimer();
+    clearInterval(interval);
+}
+
+match.bindClick = function(){
+    var grid = document.getElementById("grid");
+    grid.addEventListener("click", match.testMatch);
+};
+
 match.initGrid = function (){
     var pokemon = [
         {
@@ -92,19 +104,7 @@ match.initGrid = function (){
         card.appendChild(front);
         card.appendChild(back);
     });
-
 }
-
-match.init = function(){
-    match.initGrid();
-    match.bindClick();
-    match.startTimer();
-}
-
-match.bindClick = function(){
-    var grid = document.getElementById("grid");
-    grid.addEventListener("click", match.testMatch);
-};
 
 match.testMatch = function (event){
     var clicked = event.target;
