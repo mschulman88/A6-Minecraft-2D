@@ -35,7 +35,7 @@ match.init = function(){
 match.bindClick = function(){
     var grid = document.getElementById("grid");
     grid.addEventListener("click", match.testMatch);
-    grid.addEventListener("click",gameComplete);
+    grid.addEventListener("click", match.gameComplete);
 };
 
 match.initGrid = function (){
@@ -149,8 +149,7 @@ match.testMatch = function (event){
 match.matchPass = function(){
     var selected = document.querySelectorAll('.selected');
     selected.forEach(function (card) {
-        card.classList.add('match'); //combine
-        card.classList.add('hidden');
+        card.classList.add('match', 'hidden');
     })
     match.gameComplete();
 };
@@ -173,9 +172,9 @@ match.moveCounter = function(){
     var ala = document.getElementById('star3');
     var kad = document.getElementById('star2');
 
-    if (match.moves > 8 && match.moves < 12){
+    if (match.moves == 24){
         ala.style.visibility = "collapse";
-    } else if (match.moves > 13){
+    } else if (match.moves > 32){
         kad.style.visibility = "collapse";
     }
 };

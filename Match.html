@@ -42,21 +42,22 @@
         <div id="game"></div>
 
         <!-- MODAL WRAPPER -->
-        <div id="modal" class="overlay">
-            <div class="popup">
-                <h2>Congratulations </h2>
+        <div id="modal" class="modal">
+            <div class="modal-window">
                 <a class="close" href=# >×</a>
-                <div class="content-1">
-                    Congratulations you're a winner
-                </div>
-                <div class="content-2">
-                    <p>You made <span id=finalMove> </span> moves </p>
-                    <p>in <span id=totalTime> </span> </p>
-                    <p>Rating:  <span id=starRating></span></p>
+                <img class="congrats" alt="congratulations" src="./img/congrats.png">
+                <br>
+                <img class="pokemaster" alt="Pokemon Master" src="./img/pokemaster.png">
+                <div class="modal-rank">
+                    <p>You made: <span id="finalMove"></span> moves</p>
+                    <p>in: <span id="totalTime"> </span> </p>
+                    <p>Rating:  <span id="starRating"></span></p>
                 </div>
                 <button id="play-again"onclick="playAgain()">
-                    Play again</a>
+                    <img class="play-again" alt="play-again" src="./img/play-again.png">
                 </button>
+                <img class="mega" alt="mega-alakazam" src="./img/Alakazam-Mega.png">
+                    <!-- removed </a>-->
             </div>
         </div>
 

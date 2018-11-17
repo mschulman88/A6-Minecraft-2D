@@ -11,11 +11,13 @@
 body {
   margin: 20px 0;
   background-image: url("https://i.pinimg.com/originals/ca/fe/c2/cafec2809887a1c37c83d9ebbc953252.jpg");
-  background-size: contain;
+  background-size: cover;
+  background-position: center;
   text-align: center;
   color: yellow;
   font-weight: 800;
   font-size: 20px;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 /* ------------------------------- */
@@ -74,7 +76,7 @@ body {
 #timer {
     background-color: #3568be;
     padding: 5px;
-    border-radius: 15%;
+    border-radius: 10%;
 }
 
 #moves {
@@ -155,7 +157,7 @@ body {
 /* -----    MODAL STYLING    ----- */
 /* ------------------------------- */
 
-.overlay {
+.modal {
 	position: fixed;
 	top: 0;
 	bottom: 0;
@@ -167,12 +169,12 @@ body {
 	opacity: 0;
 }
 
-.overlay:target {
+.modal:target {
 	visibility: visible;
 	opacity: 1;
 }
   
-.popup {
+.modal-window {
 	margin: 70px auto;
 	padding: 20px;
 	background: #ffffff;
@@ -180,16 +182,9 @@ body {
 	width: 85%;
 	position: relative;
 	transition: all 5s ease-in-out;
-	font-family: 'Gloria Hallelujah', cursive;
-}
-  
-.popup h2 {
-	margin-top: 0;
-	color: #333;
-	font-family: Tahoma, Arial, sans-serif;
 }
 
-.popup .close {
+.modal-window .close {
 	position: absolute;
 	top: 20px;
 	right: 30px;
@@ -197,23 +192,23 @@ body {
 	font-size: 30px;
 	font-weight: bold;
 	text-decoration: none;
-	color: #333;
+	color: black;
 }
 
-.popup .close:hover {
-	color: #E5F720;
+.modal-window .close:hover {
+	color: red;
 }
 
-.popup .content-1,
-.content-2 {
+.modal-window .modal-rank {
 	max-height: 30%;
 	overflow: auto;
 	text-align: center;
+	color: black;
 }
 
 .show {
-	visibility: visible !important;
-	opacity: 100 !important;
+	visibility: visible;
+	opacity: 100;
 }
 
 #starRating li {
@@ -221,13 +216,18 @@ body {
 }
 
 #play-again {
-	background-color: #141214;
+	background-color: #3568be;
 	padding: 0.7rem 1rem;
 	font-size: 1.1rem;
 	display: block;
 	margin: 0 auto;
 	width: 50%;
-	font-family: 'Gloria Hallelujah', cursive;
-	color: #ffffff;
+	color: white;
 	border-radius: 5px;
+}
+
+.mega {
+	height: 200px;
+	width: 200px;
+	margin-top: 20px;
 }
