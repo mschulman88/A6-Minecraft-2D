@@ -34,8 +34,10 @@ match.init = function(){
 
 match.bindClick = function(){
     var grid = document.getElementById("grid");
+    var restart = document.getElementById("restart-img");
     grid.addEventListener("click", match.testMatch);
     grid.addEventListener("click", match.gameComplete);
+    restart.addEventListener("click", match.restart);
 };
 
 match.initGrid = function (){
@@ -209,4 +211,20 @@ match.gameComplete = function(){
         //closeicon on modal
         closeModal();
     };
+}
+
+match.restart = function(){
+    var gameBoard = document.getElementById("game");
+    gameBoard.innerHTML = "";
+    match.minute = 0;
+    match.second = 0;
+    match.timer.innerHTML = "0 min 0 secs";
+    match.moves = 0;
+    var moveCount = document.getElementById("moves");
+    moveCount.innerHTML = 0;
+
+    clearInterval(match.interval);
+    match.initGrid();
+    match.bindClick();
+    match.startTimer();
 }
