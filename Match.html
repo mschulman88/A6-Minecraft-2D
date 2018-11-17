@@ -44,16 +44,17 @@
         <!-- MODAL WRAPPER -->
         <div id="modal" class="modal">
             <div class="modal-window">
-                <a class="close" href=# >×</a>
+                <a class="close" id="close" href=# >×</a>
                 <img class="congrats" alt="congratulations" src="./img/congrats.png">
                 <br>
                 <img class="pokemaster" alt="Pokemon Master" src="./img/pokemaster.png">
                 <div class="modal-rank">
                     <p>You made: <span id="finalMove"></span> moves</p>
                     <p>in: <span id="totalTime"> </span> </p>
-                    <p>Rating:  <span id="starRating"></span></p>
+                    <p>Rating:</p>
+                    <p id="starRating"></p>
                 </div>
-                <button id="play-again"onclick="playAgain()">
+                <button id="play-again">
                     <img class="play-again" alt="play-again" src="./img/play-again.png">
                 </button>
                 <img class="mega" alt="mega-alakazam" src="./img/Alakazam-Mega.png">

@@ -231,7 +231,8 @@ match.gameComplete = function(){
         document.getElementById("totalTime").innerHTML = finalTime;
 
         //closeicon on modal
-        closeModal();
+        match.closeModal();
+        match.playAgain();
     };
 }
 
@@ -262,4 +263,22 @@ match.restart = function(){
     match.initGrid();
     match.bindClick();
     match.startTimer();
+}
+
+// MODAL - CLOSE WINDOW BUTTON
+match.closeModal = function(){
+    var closeModal = document.getElementById("close");
+    closeModal.addEventListener("click", function(){
+        match.modal.classList.remove("show");
+        match.restart();
+    });
+}
+
+// MODAL - PLAY AGAIN
+match.playAgain = function(){
+    var newGame = document.getElementById("play-again");
+    newGame.addEventListener("click", function(){
+        match.modal.classList.remove("show");
+        match.restart();
+    });
 }
