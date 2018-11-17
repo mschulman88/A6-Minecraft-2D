@@ -18,7 +18,6 @@ match.interval;
 // MODAL VARIABLES
 match.correctMatches = document.getElementsByClassName("match");;
 match.modal = document.getElementById("modal")
-// match.starsList = document.querySelectorAll(".star");
 match.closeicon = document.querySelector(".close");
 
 // GAME START FUNCTIONS
@@ -30,7 +29,6 @@ match.init = function(){
     match.initGrid();
     match.bindClick();
     match.startTimer();
-    // clearInterval(match.interval);
 }
 
 match.bindClick = function(){
@@ -218,19 +216,15 @@ match.gameComplete = function(){
     if (match.correctMatches.length > 22){
         clearInterval(match.interval);
         finalTime = match.timer.innerHTML;
-
-        // show congratulations modal
         match.modal.classList.add("show");
-
-        // declare star rating variable
         var starRating = document.querySelector(".stars").innerHTML;
 
-        //showing move, rating, time on modal
+        // RANKING STATS
         document.getElementById("finalMove").innerHTML = match.moves;
         document.getElementById("starRating").innerHTML = starRating;
         document.getElementById("totalTime").innerHTML = finalTime;
 
-        //closeicon on modal
+        // OPTIONS
         match.closeModal();
         match.playAgain();
     };
