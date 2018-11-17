@@ -1,3 +1,4 @@
+// INITIALIZE NAMESPACE
 var match = {};
 
 // MATCH VARIABLES
@@ -20,7 +21,7 @@ match.modal = document.getElementById("modal")
 // match.starsList = document.querySelectorAll(".star");
 match.closeicon = document.querySelector(".close");
 
-
+// GAME START FUNCTIONS
 $(document).ready(function(){ 
     match.init();
 });
@@ -41,6 +42,7 @@ match.bindClick = function(){
 };
 
 match.initGrid = function (){
+    // ARRAY OF POKEMON
     var pokemon = [
         {
             'name': "Bulbasaur",
@@ -92,10 +94,12 @@ match.initGrid = function (){
         },
     ];
     
+    // SHUFFLE
     var pokemonGrid = pokemon.concat(pokemon).sort(function() {
         return 0.5 - Math.random();
     });
 
+    // CREATE GRID
     var game = document.getElementById('game');
     var grid = document.createElement('section');
     grid.setAttribute('class', 'grid');
@@ -103,23 +107,30 @@ match.initGrid = function (){
     game.appendChild(grid);
 
     pokemonGrid.forEach(item =>{
+        // CREATE CARD CONTAINER
         var card = document.createElement('div');
         card.classList.add('card');
         card.dataset.name = item.name;
+        
+        // CREATE FRONT/BACK
         var front = document.createElement('div');
         front.classList.add('front');
         var back = document.createElement('div');
         back.style.backgroundImage = `url(${item.img})`;
         back.classList.add('back');
+
+        // APPEND CHILDREN TO GRID
         grid.appendChild(card);
         card.appendChild(front);
         card.appendChild(back);
     });
 }
 
+// CARD MATCH FUNCTION
 match.testMatch = function (event){
     var clicked = event.target;
 
+    // VERIFY CLICK INPUT IS CORRECT
     if (clicked.nodeName === 'SECTION' 
         || clicked === match.previousTarget 
         || clicked.parentNode.classList.contains('selected') 
@@ -128,13 +139,19 @@ match.testMatch = function (event){
     }
     if (match.count < 2) {
         match.count++;
+
+        // FIRST GUESS
         if (match.count === 1) {
             match.firstGuess = clicked.parentNode.dataset.name;
             clicked.parentNode.classList.add('selected');
+
+        // SECOND GUESS
         } else {
             match.secondGuess = clicked.parentNode.dataset.name;
             clicked.parentNode.classList.add('selected');
         }
+        
+        // MATCH DETECTED
         if (match.firstGuess !== '' && match.secondGuess !== '') {
             match.moveCounter();
             if (match.firstGuess === match.secondGuess) {
@@ -148,6 +165,7 @@ match.testMatch = function (event){
     }
 };
     
+// CHANGE CLASS OF CORRECT MATCH CARDS
 match.matchPass = function(){
     var selected = document.querySelectorAll('.selected');
     selected.forEach(function (card) {
@@ -156,6 +174,7 @@ match.matchPass = function(){
     match.gameComplete();
 };
 
+// RESET GUESSES AFTER TWO GUESSES
 match.resetGuesses = function(){
     match.firstGuess = '';
     match.secondGuess = '';
@@ -168,6 +187,7 @@ match.resetGuesses = function(){
     })
 };
 
+// MOVE COUNTER
 match.moveCounter = function(){    
     match.moves++;    
     document.getElementById("moves").innerHTML = match.moves;
@@ -181,6 +201,7 @@ match.moveCounter = function(){
     }
 };
 
+// TIMER
 match.startTimer = function(){
     match.interval = setInterval(function(){
         match.timer.innerHTML = match.minute+" min "+match.second+" secs";
@@ -192,6 +213,7 @@ match.startTimer = function(){
     },1000);
 }
 
+// CHECK IF GAME WON - DISPLAY MODAL
 match.gameComplete = function(){
     if (match.correctMatches.length > 22){
         clearInterval(match.interval);
@@ -213,16 +235,23 @@ match.gameComplete = function(){
     };
 }
 
+// RESTART GAME
 match.restart = function(){
+    // Reshuffle cards
     var gameBoard = document.getElementById("game");
     gameBoard.innerHTML = "";
+
+    // Reset timer
     match.minute = 0;
     match.second = 0;
     match.timer.innerHTML = "0 min 0 secs";
+
+    // Reset move count
     match.moves = 0;
     var moveCount = document.getElementById("moves");
     moveCount.innerHTML = 0;
 
+    // Initialize new game
     clearInterval(match.interval);
     match.initGrid();
     match.bindClick();
