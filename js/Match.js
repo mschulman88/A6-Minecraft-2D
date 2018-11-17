@@ -165,7 +165,7 @@ match.testMatch = function (event){
     }
 };
     
-// CHANGE CLASS OF CORRECT MATCH CARDS
+// CHANGE CLASS OF CORRECTLY MATCHED CARDS
 match.matchPass = function(){
     var selected = document.querySelectorAll('.selected');
     selected.forEach(function (card) {
@@ -174,7 +174,7 @@ match.matchPass = function(){
     match.gameComplete();
 };
 
-// RESET GUESSES AFTER TWO GUESSES
+// RESET GUESSES AFTER TWO CHOICES
 match.resetGuesses = function(){
     match.firstGuess = '';
     match.secondGuess = '';
@@ -237,21 +237,27 @@ match.gameComplete = function(){
 
 // RESTART GAME
 match.restart = function(){
-    // Reshuffle cards
+    // RESHUFFLE CARDS
     var gameBoard = document.getElementById("game");
     gameBoard.innerHTML = "";
 
-    // Reset timer
+    // RESET TIMER
     match.minute = 0;
     match.second = 0;
     match.timer.innerHTML = "0 min 0 secs";
 
-    // Reset move count
+    // RESET MOVE COUNT
     match.moves = 0;
     var moveCount = document.getElementById("moves");
     moveCount.innerHTML = 0;
 
-    // Initialize new game
+    // RESET RANKING/STARS
+    var ala = document.getElementById('star3');
+    var kad = document.getElementById('star2');
+    ala.style.visibility = "visible";
+    kad.style.visibility = "visible";
+
+    // INITIALIZE NEW GAME
     clearInterval(match.interval);
     match.initGrid();
     match.bindClick();
