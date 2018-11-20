@@ -346,8 +346,8 @@ minecraft.initGrid = function (){
             'img': "img/empty.png",
             },
             {
-            'name': "dirt",
-            'img': "img/empty.png",
+            'name': "stone",
+            'img': "img/stone.png",
             }
         ],
              // ----- ROW 5 -----
@@ -425,12 +425,12 @@ minecraft.initGrid = function (){
             'img': "img/empty.png",
             },
             {
-            'name': "empty",
-            'img': "img/empty.png",
+            'name': "stone",
+            'img': "img/stone.png",
             },
             {
-            'name': "empty",
-            'img': "img/empty.png",
+            'name': "stone",
+            'img': "img/stone.png",
             }
         ],
              // ----- ROW 6 -----
@@ -504,16 +504,16 @@ minecraft.initGrid = function (){
             'img': "img/empty.png",
             },
             {
-            'name': "empty",
-            'img': "img/empty.png",
+            'name': "stone",
+            'img': "img/stone.png",
             },
             {
-            'name': "empty",
-            'img': "img/empty.png",
+            'name': "stone",
+            'img': "img/stone.png",
             },
             {
-            'name': "empty",
-            'img': "img/empty.png",
+            'name': "stone",
+            'img': "img/stone.png",
             }
         ],
              // ----- ROW 7 -----
