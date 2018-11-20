@@ -18,10 +18,280 @@ minecraft.init = function(){
 minecraft.initGrid = function (){
     // ARRAY OF BLOCKS
     var blockGrid = [
+            // ----- ROW 1 -----
         [
             {
-            'name': "dirt",
-            'img': "img/dirt.png",
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            }
+        ],
+            // ----- ROW 2 -----
+        [
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            }
+        ],
+            // ----- ROW 3 -----
+        [
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            }
+        ],
+            // ----- ROW 4 -----
+        [
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
             },
             {
             'name': "leaves",
@@ -32,22 +302,146 @@ minecraft.initGrid = function (){
             'img': "img/tree.png",
             },
             {
-            'name': "stone",
-            'img': "img/stone.png",
+            'name': "leaves",
+            'img': "img/leaves.png",
             },
             {
-            'name': "grass",
-            'img': "img/grass.png",
+            'name': "empty",
+            'img': "img/empty.png",
             },
-        ],
-        [
             {
-            'name': "dirt",
-            'img': "img/dirt.png",
+            'name': "empty",
+            'img': "img/empty.png",
             },
             {
             'name': "leaves",
             'img': "img/leaves.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "leaves",
+            'img': "img/leaves.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/empty.png",
+            }
+        ],
+             // ----- ROW 5 -----
+        [
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "tree",
+            'img': "img/tree.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "tree",
+            'img': "img/tree.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "tree",
+            'img': "img/tree.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            }
+        ],
+             // ----- ROW 6 -----
+        [
+            {
+            'name': "stone",
+            'img': "img/stone.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
             },
             {
             'name': "tree",
@@ -58,18 +452,36 @@ minecraft.initGrid = function (){
             'img': "img/stone.png",
             },
             {
-            'name': "grass",
-            'img': "img/grass.png",
-            },
-        ],
-        [
-            {
-            'name': "dirt",
-            'img': "img/dirt.png",
+            'name': "empty",
+            'img': "img/empty.png",
             },
             {
-            'name': "leaves",
-            'img': "img/leaves.png",
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "tree",
+            'img': "img/tree.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
             },
             {
             'name': "tree",
@@ -80,54 +492,362 @@ minecraft.initGrid = function (){
             'img': "img/stone.png",
             },
             {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            },
+            {
+            'name': "empty",
+            'img': "img/empty.png",
+            }
+        ],
+             // ----- ROW 7 -----
+        [
+            {
             'name': "grass",
             'img': "img/grass.png",
             },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            },
+            {
+            'name': "grass",
+            'img': "img/grass.png",
+            }
         ],
+             // ----- ROW 8 -----
         [
             {
             'name': "dirt",
             'img': "img/dirt.png",
             },
             {
-            'name': "leaves",
-            'img': "img/leaves.png",
+            'name': "dirt",
+            'img': "img/dirt.png",
             },
             {
-            'name': "tree",
-            'img': "img/tree.png",
+            'name': "dirt",
+            'img': "img/dirt.png",
             },
             {
-            'name': "stone",
-            'img': "img/stone.png",
+            'name': "dirt",
+            'img': "img/dirt.png",
             },
             {
-            'name': "grass",
-            'img': "img/grass.png",
+            'name': "dirt",
+            'img': "img/dirt.png",
             },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            }
         ],
+             // ----- ROW 9 -----
         [
             {
             'name': "dirt",
             'img': "img/dirt.png",
             },
             {
-            'name': "leaves",
-            'img': "img/leaves.png",
+            'name': "dirt",
+            'img': "img/dirt.png",
             },
             {
-            'name': "tree",
-            'img': "img/tree.png",
+            'name': "dirt",
+            'img': "img/dirt.png",
             },
             {
-            'name': "stone",
-            'img': "img/stone.png",
+            'name': "dirt",
+            'img': "img/dirt.png",
             },
             {
-            'name': "grass",
-            'img': "img/grass.png",
+            'name': "dirt",
+            'img': "img/dirt.png",
             },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            }
         ],
+             // ----- ROW 10 -----
+        [
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            },
+            {
+            'name': "dirt",
+            'img': "img/dirt.png",
+            }
+        ]
     ];
 
     
