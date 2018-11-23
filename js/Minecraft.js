@@ -6,9 +6,28 @@ minecraft.statusDirtRemove = false;
 var tools = ['pickaxe', 'shovel', 'axe'];
 
 // GAME START FUNCTIONS
-$(document).ready(function(){ 
-    minecraft.init();
+// GAME START FUNCTIONS
+$(document).ready(function(){
+    minecraft.modal() 
 });
+
+//Modal
+minecraft.modal = function (){
+    var modal = $('#modal')
+    var body = $('body')
+    body.addClass('landing')
+    var text = $('<div></div>')
+    modal.append(text)
+    var instructions = "Select a theme and create your own 2D world. You can use tools such as an axe, pickaxe, to acquire resources and build stuff."
+    text.append(instructions)
+    var start_button = $('<button>Start Game</button>')
+    modal.append(start_button)
+    start_button.click(function() {
+        minecraft.init()
+        modal.hide()
+        body.removeClass('landing')
+    });
+}
 
 minecraft.init = function(){
     minecraft.initGrid();
