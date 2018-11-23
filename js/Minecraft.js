@@ -16,11 +16,6 @@ minecraft.init = function(){
 //minecraft global arrays
 var tools = ['pickaxe', 'shovel', 'axe'];
 
-// minecraft.bindClick = function(){
-
-// };
-    minecraft.bindClick();
-}
 
 minecraft.bindClick = function(){
     var grid = document.getElementById("grid");
@@ -913,4 +908,4 @@ minecraft.initSidebar = function (){
         console.log('append');
     }
 }  
-}
+
