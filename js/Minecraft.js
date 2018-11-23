@@ -1,6 +1,8 @@
 // INITIALIZE NAMESPACE
 var minecraft = {};
 
+minecraft.statusDirtRemove = false;
+
 
 // GAME START FUNCTIONS
 $(document).ready(function(){ 
@@ -9,11 +11,29 @@ $(document).ready(function(){
 
 minecraft.init = function(){
     minecraft.initGrid();
+    minecraft.bindClick();
 }
 
-// minecraft.bindClick = function(){
+minecraft.bindClick = function(){
+    var grid = document.getElementById("grid");
+    grid.addEventListener("click", minecraft.REMOVE);
+    var tool = document.getElementById("tool");
+    tool.addEventListener("click", minecraft.activateDirt);
+};
 
-// };
+minecraft.activateDirt = function(){
+    minecraft.statusDirtRemove = true;
+}
+
+minecraft.REMOVE = function (event){
+    var clicked = event.target;
+
+    if (minecraft.statusDirtRemove == true && clicked.dataset.name == "dirt"){
+        clicked.classList.add('mined');
+    }
+}
+
+
 
 minecraft.initGrid = function (){
     // ARRAY OF BLOCKS

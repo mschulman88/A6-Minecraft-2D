@@ -15,7 +15,7 @@ body {
   }
   
   /* ------------------------------- */
-  /* ----- CARD & GRID STYLING ----- */
+  /* ----- BLOCK & GRID STYLING ----- */
   /* ------------------------------- */
   
   .grid {
@@ -31,4 +31,9 @@ body {
       height: 50px;
       width: 50px;
       background-size: cover;
+  }
+
+  .mined {
+      visibility: hidden;
+      background-image: none;
   }
