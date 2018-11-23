@@ -58,6 +58,7 @@ minecraft.REMOVE = function (event){
 
 minecraft.initSidebar = function (){
     var sidebar = $('#sidebar');
+    var inventory = $('.inventory');
     for (var i =0 ; i < minecraft.tools.length ; i ++){
         var tool = document.createElement('button');
         tool.style.backgroundImage = `url(img/${minecraft.tools[i]}.png)`;
@@ -67,14 +68,17 @@ minecraft.initSidebar = function (){
         toolLabel.src= "img/" + minecraft.tools[i] + "label.png";
         toolLabel.classList.add('tool-label');
         tool.append(toolLabel);
-        sidebar.append(tool);
+        sidebar.prepend(tool);
     }
     for (var i = 0; i < minecraft.inventory.length ; i ++) {
         var resource = document.createElement('button');
         resource.style.backgroundImage = `url(img/${minecraft.inventory[i]}.png)`;
-        resource.classList.add('inventory');
+        resource.classList.add('resources');
         resource.classList.add(minecraft.inventory[i]);
-        sidebar.append(resource);
+        label = document.createElement('p');
+        label.innerHTML = "0";
+        resource.append(label);
+        inventory.append(resource);
     }
 }  
 

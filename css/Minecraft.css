@@ -95,9 +95,18 @@ body {
   height: 10px;
 }
 .inventory {
-  height: 11%;
-  width: 37%;
+  height: 36%;
+  width: 78%;
+}
+.resources {
+  height: 27%;
+  width: 42%;
   max-width: 100%;
+  margin: 4%;
+  color: white;
+}
+p {
+  margin-top: 143%;
 }
   
   /* ------------------------------- */
