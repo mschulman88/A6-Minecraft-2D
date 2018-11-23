@@ -5,6 +5,7 @@
 } */
 
 body {
+<<<<<<< HEAD
   margin: 20px 0;
   background-color: lightcyan;
   text-align: center;
@@ -57,3 +58,37 @@ body {
   margin-left: -6px;
   height: 13px;
 }
+=======
+    margin: 20px 0;
+    background-color: lightcyan;
+    text-align: center;
+    color: black;
+    font-weight: 800;
+    font-size: 20px;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  
+  /* ------------------------------- */
+  /* ----- BLOCK & GRID STYLING ----- */
+  /* ------------------------------- */
+  
+  .grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    justify-content: space-evenly;
+  }
+  
+  .block {
+      position: relative;
+      height: 50px;
+      width: 50px;
+      background-size: cover;
+  }
+
+  .mined {
+      visibility: hidden;
+      background-image: none;
+  }
+>>>>>>> 3a71c82a82eb5ef992fa52e9e889e1f8e8a221b1
