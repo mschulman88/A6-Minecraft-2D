@@ -1,11 +1,8 @@
 // INITIALIZE NAMESPACE
 var minecraft = {};
 
-<<<<<<< HEAD
-=======
 minecraft.statusDirtRemove = false;
 
->>>>>>> 3a71c82a82eb5ef992fa52e9e889e1f8e8a221b1
 
 // GAME START FUNCTIONS
 $(document).ready(function(){ 
@@ -14,7 +11,6 @@ $(document).ready(function(){
 
 minecraft.init = function(){
     minecraft.initGrid();
-<<<<<<< HEAD
     minecraft.initSidebar();
 }
 //minecraft global arrays
@@ -23,7 +19,6 @@ var tools = ['pickaxe', 'shovel', 'axe'];
 // minecraft.bindClick = function(){
 
 // };
-=======
     minecraft.bindClick();
 }
 
@@ -47,7 +42,6 @@ minecraft.REMOVE = function (event){
 }
 
 
->>>>>>> 3a71c82a82eb5ef992fa52e9e889e1f8e8a221b1
 
 minecraft.initGrid = function (){
     // ARRAY OF BLOCKS
@@ -902,7 +896,6 @@ minecraft.initGrid = function (){
             grid.appendChild(block);
         })
     });
-<<<<<<< HEAD
 }
 
 minecraft.initSidebar = function (){
@@ -920,6 +913,4 @@ minecraft.initSidebar = function (){
         console.log('append');
     }
 }  
-=======
 }
->>>>>>> 3a71c82a82eb5ef992fa52e9e889e1f8e8a221b1

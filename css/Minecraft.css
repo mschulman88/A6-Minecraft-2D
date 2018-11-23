@@ -5,7 +5,6 @@
 } */
 
 body {
-<<<<<<< HEAD
   margin: 20px 0;
   background-color: lightcyan;
   text-align: center;
@@ -58,7 +57,6 @@ body {
   margin-left: -6px;
   height: 13px;
 }
-=======
     margin: 20px 0;
     background-color: lightcyan;
     text-align: center;
@@ -91,4 +89,3 @@ body {
       visibility: hidden;
       background-image: none;
   }
->>>>>>> 3a71c82a82eb5ef992fa52e9e889e1f8e8a221b1
