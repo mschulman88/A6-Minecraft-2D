@@ -9,7 +9,10 @@ $(document).ready(function(){
 
 minecraft.init = function(){
     minecraft.initGrid();
+    minecraft.initSidebar();
 }
+//minecraft global arrays
+var tools = ['pickaxe', 'shovel', 'axe'];
 
 // minecraft.bindClick = function(){
 
@@ -869,3 +872,19 @@ minecraft.initGrid = function (){
         })
     });
 }
+
+minecraft.initSidebar = function (){
+    var sidebar = $('#sidebar');
+    for (var i =0 ; i < tools.length ; i ++){
+        var tool = document.createElement('button');
+        tool.style.backgroundImage = `url(img/${tools[i]}.png)`;
+        tool.classList.add('tools');
+        tool.classList.add(tools[i]);
+        var toolLabel = document.createElement('img');
+        toolLabel.src= "img/" + tools[i] + "label.png";
+        toolLabel.classList.add('tool-label');
+        tool.append(toolLabel);
+        sidebar.append(tool);
+        console.log('append');
+    }
+}  

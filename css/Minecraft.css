@@ -32,3 +32,28 @@ body {
     width: 50px;
     background-size: cover;
 }
+#sidebar {
+  height: 500px;
+  width: 14vw;
+  background-color: black;
+  display: inline-block;
+  position: absolute;
+  z-index: 1234;
+  margin-inline-start: 34%;
+}
+.tools {
+  background-size: cover;
+  flex-direction: column;
+  height: 21%;
+  align-items: center;
+  width: 58%;
+  border-color: darkgrey;
+  background-repeat: no-repeat;
+  background-color: black;
+  margin: auto;
+}
+.tool-label {
+  transform: translateY(773%) translateX(7%);
+  margin-left: -6px;
+  height: 13px;
+}
