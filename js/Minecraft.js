@@ -44,6 +44,8 @@ minecraft.init = function(){
 minecraft.bindClick = function(){
     var grid = document.getElementById("grid");
     grid.addEventListener("click", minecraft.REMOVE);
+    var blocks = document.getElementsByClassName("block");
+    blocks.addEventListener("click", minecraft.ADD);
     var tool = document.getElementById("tool");
     tool.addEventListener("click", minecraft.activateDirt);
     var tool2 = document.getElementById("tool2");
@@ -72,19 +74,23 @@ minecraft.replace = function(){
 
 minecraft.REMOVE = function (event){
     var clicked = event.target;
-    minecraft.previousResource = clicked.dataset.name;
+    // minecraft.previousResource = clicked.dataset.name.value;
 
     if (minecraft.statusDirtRemove == true && clicked.dataset.name == "dirt"){
         clicked.classList.add('mined');
     } else if (minecraft.statusStoneRemove == true && clicked.dataset.name == "stone"){
         clicked.classList.add('mined');
-    } else if (minecraft.statusReplace = true && minecraft.previousResource == "dirt"){
+    } 
+}
+
+minecraft.REMOVE = function (event){
+    var clicked = event.target;
+
+    if (minecraft.statusReplace == true){
+        event.stopPropagation(); 
         clicked.classList.remove('mined');
         clicked.classList.add('dirt');
-    } else if (minecraft.statusReplace = true && minecraft.previousResource == "stone"){
-        clicked.classList.remove('mined');
-        clicked.classList.add('stone');
-    } 
+    }
 }
 
 
