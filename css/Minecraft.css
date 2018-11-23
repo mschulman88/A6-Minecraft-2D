@@ -13,6 +13,11 @@ body {
   font-size: 20px;
   font-family: Helvetica, Arial, sans-serif;
 }
+#full-game {
+  display: flex;
+  justify-content: center;
+  width: 87%;
+}
 
 /* ------------------------------- */
 /* ----- CARD & GRID STYLING ----- */
@@ -33,29 +38,37 @@ body {
   background-size: cover;
 }
 #sidebar {
-  height: 500px;
-  width: 14vw;
-  background-color: black;
-  display: inline-block;
-  position: absolute;
-  z-index: 1234;
-  margin-inline-start: 34%;
+    flex-direction: column;
+    height: 500px;
+    justify-content: space-evenly;
+    width: 13vw;
+    background-color: black;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    z-index: 1234;
+    margin-inline-start: 48%;
 }
 .tools {
-  background-size: cover;
-  flex-direction: column;
-  height: 21%;
-  align-items: center;
-  width: 58%;
-  border-color: darkgrey;
-  background-repeat: no-repeat;
-  background-color: black;
-  margin: auto;
+    background-size: contain;
+    flex-direction: column;
+    height: 15%;
+    align-items: center;
+    width: 10vh;
+    padding: 24%;
+    border-color: darkgrey;
+    background-color: black;
+    background-repeat: no-repeat;
 }
 .tool-label {
-  transform: translateY(773%) translateX(7%);
+  transform: translateY(252%) translateX(7%);
   margin-left: -6px;
-  height: 13px;
+  height: 10px;
+}
+.inventory {
+  height: 11%;
+  width: 37%;
+  max-width: 100%;
 }
   
   /* ------------------------------- */

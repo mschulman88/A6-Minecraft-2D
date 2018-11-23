@@ -3,7 +3,8 @@ var minecraft = {};
 
 minecraft.statusDirtRemove = false;
 //minecraft global arrays
-var tools = ['pickaxe', 'shovel', 'axe'];
+minecraft.tools = ['pickaxe', 'shovel', 'axe'];
+minecraft.inventory = ['dirt', 'leaves', 'stone', 'tree'];
 
 // GAME START FUNCTIONS
 $(document).ready(function(){ 
@@ -38,17 +39,23 @@ minecraft.REMOVE = function (event){
 
 minecraft.initSidebar = function (){
     var sidebar = $('#sidebar');
-    for (var i =0 ; i < tools.length ; i ++){
+    for (var i =0 ; i < minecraft.tools.length ; i ++){
         var tool = document.createElement('button');
-        tool.style.backgroundImage = `url(img/${tools[i]}.png)`;
+        tool.style.backgroundImage = `url(img/${minecraft.tools[i]}.png)`;
         tool.classList.add('tools');
-        tool.classList.add(tools[i]);
+        tool.classList.add(minecraft.tools[i]);
         var toolLabel = document.createElement('img');
-        toolLabel.src= "img/" + tools[i] + "label.png";
+        toolLabel.src= "img/" + minecraft.tools[i] + "label.png";
         toolLabel.classList.add('tool-label');
         tool.append(toolLabel);
         sidebar.append(tool);
-        console.log('append');
+    }
+    for (var i = 0; i < minecraft.inventory.length ; i ++) {
+        var resource = document.createElement('button');
+        resource.style.backgroundImage = `url(img/${minecraft.inventory[i]}.png)`;
+        resource.classList.add('inventory');
+        resource.classList.add(minecraft.inventory[i]);
+        sidebar.append(resource);
     }
 }  
 
