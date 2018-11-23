@@ -44,8 +44,8 @@ minecraft.init = function(){
 minecraft.bindClick = function(){
     var grid = document.getElementById("grid");
     grid.addEventListener("click", minecraft.REMOVE);
-    var blocks = document.getElementsByClassName("block");
-    blocks.addEventListener("click", minecraft.ADD);
+    // var blocks = document.getElementsByClassName("block");
+    // blocks.addEventListener("click", minecraft.ADD);
     var tool = document.getElementById("tool");
     tool.addEventListener("click", minecraft.activateDirt);
     var tool2 = document.getElementById("tool2");
@@ -83,15 +83,15 @@ minecraft.REMOVE = function (event){
     } 
 }
 
-minecraft.REMOVE = function (event){
-    var clicked = event.target;
+// minecraft.REMOVE = function (event){
+//     var clicked = event.target;
 
-    if (minecraft.statusReplace == true){
-        event.stopPropagation(); 
-        clicked.classList.remove('mined');
-        clicked.classList.add('dirt');
-    }
-}
+//     if (minecraft.statusReplace == true){
+//         event.stopPropagation(); 
+//         clicked.classList.remove('mined');
+//         clicked.classList.add('dirt');
+//     }
+// }
 
 
 minecraft.initSidebar = function (){
