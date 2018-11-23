@@ -113,24 +113,42 @@ p {
   /* ----- BLOCK & GRID STYLING ----- */
   /* ------------------------------- */
   
-  .grid {
+.grid {
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     justify-content: space-evenly;
-  }
+}
   
-  .block {
+.block {
     position: relative;
     height: 50px;
     width: 50px;
     background-size: cover;
-  }
+}
 
-  .mined {
+.mined {
     visibility: hidden;
     background-image: none;
+}
+
+.dirt {
+    /* position: relative;
+    height: 50px;
+    width: 50px; */
+    background-size: cover;
+    background-image: url("../img/dirt.png");
+    /* background-size: cover; */
+}
+
+.stone {
+  /* position: relative;
+  height: 50px;
+  width: 50px; */
+  background-size: cover;
+  background-image: url("../img/stone.png");
+  /* background-size: cover; */
   }
 
   /* Mobile display */
