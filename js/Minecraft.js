@@ -2,7 +2,8 @@
 var minecraft = {};
 
 minecraft.statusDirtRemove = false;
-
+//minecraft global arrays
+var tools = ['pickaxe', 'shovel', 'axe'];
 
 // GAME START FUNCTIONS
 $(document).ready(function(){ 
@@ -12,10 +13,8 @@ $(document).ready(function(){
 minecraft.init = function(){
     minecraft.initGrid();
     minecraft.initSidebar();
+    minecraft.bindClick();
 }
-//minecraft global arrays
-var tools = ['pickaxe', 'shovel', 'axe'];
-
 
 minecraft.bindClick = function(){
     var grid = document.getElementById("grid");
@@ -37,6 +36,21 @@ minecraft.REMOVE = function (event){
 }
 
 
+minecraft.initSidebar = function (){
+    var sidebar = $('#sidebar');
+    for (var i =0 ; i < tools.length ; i ++){
+        var tool = document.createElement('button');
+        tool.style.backgroundImage = `url(img/${tools[i]}.png)`;
+        tool.classList.add('tools');
+        tool.classList.add(tools[i]);
+        var toolLabel = document.createElement('img');
+        toolLabel.src= "img/" + tools[i] + "label.png";
+        toolLabel.classList.add('tool-label');
+        tool.append(toolLabel);
+        sidebar.append(tool);
+        console.log('append');
+    }
+}  
 
 minecraft.initGrid = function (){
     // ARRAY OF BLOCKS
@@ -873,7 +887,6 @@ minecraft.initGrid = function (){
         ]
     ];
 
-    
 
     // CREATE GRID
     var game = document.getElementById('game');
@@ -892,20 +905,3 @@ minecraft.initGrid = function (){
         })
     });
 }
-
-minecraft.initSidebar = function (){
-    var sidebar = $('#sidebar');
-    for (var i =0 ; i < tools.length ; i ++){
-        var tool = document.createElement('button');
-        tool.style.backgroundImage = `url(img/${tools[i]}.png)`;
-        tool.classList.add('tools');
-        tool.classList.add(tools[i]);
-        var toolLabel = document.createElement('img');
-        toolLabel.src= "img/" + tools[i] + "label.png";
-        toolLabel.classList.add('tool-label');
-        tool.append(toolLabel);
-        sidebar.append(tool);
-        console.log('append');
-    }
-}  
-
