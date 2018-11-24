@@ -108,10 +108,13 @@ minecraft.blockRemove = function (event){
         	
     } else if (minecraft.statusRemoveTree == true && clicked.parentNode.dataset.name == "tree" 
     || minecraft.statusRemoveTree == true && clicked.parentNode.dataset.name == "leaves"){
+        minecraft.counterArray[1] = minecraft.counterArray[1]+1;
+        minecraft.counterArray[3] = minecraft.counterArray[3]+1;
         $(clicked).css("background", "");
         $(clicked).removeClass("front tree leaves").addClass("mined");
 
     } else if (minecraft.statusRemoveStone == true && clicked.parentNode.dataset.name == "stone"){
+        minecraft.counterArray[2] = minecraft.counterArray[2]+1;
         $(clicked).css("background", "");
         $(clicked).removeClass("front stone").addClass("mined");
     } 
@@ -121,13 +124,17 @@ minecraft.blockRemove = function (event){
 minecraft.blockAdd = function (event){
     var clicked = event.target;
 
-    if (minecraft.statusPlaceDirt == true){
+    if (minecraft.statusPlaceDirt == true && minecraft.counterArray[0] > 0){
+        minecraft.counterArray[0]= minecraft.counterArray[0]-1;
         $(clicked).removeClass().addClass("dirt");
-    } else if (minecraft.statusPlaceLeaves == true){
+    } else if (minecraft.statusPlaceLeaves == true && minecraft.counterArray[1] > 0){
+        minecraft.counterArray[1] = minecraft.counterArray[1]-1;
         $(clicked).removeClass().addClass("leaves");
-    } else if (minecraft.statusPlaceTree == true){
+    } else if (minecraft.statusPlaceTree == true && minecraft.counterArray[3] > 0){
+        minecraft.counterArray[3] = minecraft.counterArray[3]-1;
         $(clicked).removeClass().addClass("tree");
-    } else if (minecraft.statusPlaceStone == true){
+    } else if (minecraft.statusPlaceStone == true && minecraft.counterArray[2] > 0){
+        minecraft.counterArray[2] = minecraft.counterArray[2]-1;
         $(clicked).removeClass().addClass("stone");
     }
 }
