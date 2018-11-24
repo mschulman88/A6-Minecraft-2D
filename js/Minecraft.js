@@ -102,7 +102,7 @@ minecraft.blockRemove = function (event){
 
     if (minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "dirt" 
     || minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "grass"){
-        minecraft.counterArray[0] = minecraft.counterArray[0]+1;
+        minecraft.counterArray[0] = minecraft.counterArray[0]+2;
         $(clicked).css("background", "");
         $(clicked).removeClass("front dirt").addClass("mined");
         	
@@ -114,7 +114,7 @@ minecraft.blockRemove = function (event){
         $(clicked).removeClass("front tree leaves").addClass("mined");
 
     } else if (minecraft.statusRemoveStone == true && clicked.parentNode.dataset.name == "stone"){
-        minecraft.counterArray[2] = minecraft.counterArray[2]+1;
+        minecraft.counterArray[2] = minecraft.counterArray[2]+2;
         $(clicked).css("background", "");
         $(clicked).removeClass("front stone").addClass("mined");
     } 
