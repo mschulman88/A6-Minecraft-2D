@@ -45,6 +45,35 @@ minecraft.init = function(){
     minecraft.bindClick();
 }
 
+// INITIALIZE SIDEBAR
+minecraft.initSidebar = function (){
+    var sidebar = $('#sidebar');
+    var inventory = $('.inventory');
+    for (var i =0 ; i < minecraft.tools.length ; i ++){
+        var tool = $("<button/>");
+        tool.css('background-image', `url(img/${minecraft.tools[i]}.png)`);
+        tool.addClass('tools');
+        tool.addClass(minecraft.tools[i]);
+        tool.id = minecraft.tools[i];
+        var toolLabel = $('<img/>');
+        toolLabel.css('img/' + minecraft.tools[i] + "label.png");
+        toolLabel.addClass('tool-label');
+        tool.append(toolLabel);
+        sidebar.prepend(tool);
+    }
+    for (var i = 0; i < minecraft.inventory.length ; i ++) {
+        var resource = $('<button/>');
+        resource.css('background-image', `url(img/${minecraft.inventory[i]}.png)`);
+        resource.addClass('resources');
+        resource.addClass(minecraft.inventory[i]);
+        resource.id = minecraft.inventory[i];
+        label = $('<p>');
+        label.text(0);
+        resource.append(label);
+        inventory.append(resource);
+    }
+}  
+
 // BIND CLICKS
 minecraft.bindClick = function(){
     $("#grid").click(minecraft.blockRemove);
@@ -59,6 +88,41 @@ minecraft.bindClick = function(){
     $("#tree").click(minecraft.placeTree);
     $("#stone").click(minecraft.placeStone);
 };
+
+// REMOVE BLOCK FUNCTION 
+minecraft.blockRemove = function (event){
+    var clicked = event.target;
+
+    if (minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "dirt" 
+    || minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "grass"){
+        $(clicked).css("background", "");
+        $(clicked).removeClass("front dirt").addClass("mined");
+        	
+    } else if (minecraft.statusRemoveTree == true && clicked.parentNode.dataset.name == "tree" 
+    || minecraft.statusRemoveTree == true && clicked.parentNode.dataset.name == "leaves"){
+        $(clicked).css("background", "");
+        $(clicked).removeClass("front tree leaves").addClass("mined");
+
+    } else if (minecraft.statusRemoveStone == true && clicked.parentNode.dataset.name == "stone"){
+        $(clicked).css("background", "");
+        $(clicked).removeClass("front stone").addClass("mined");
+    } 
+}
+
+// ADD BLOCK FUNCTION 
+minecraft.blockAdd = function (event){
+    var clicked = event.target;
+
+    if (minecraft.statusPlaceDirt == true){
+        $(clicked).attr("class", "dirt");
+    } else if (minecraft.statusPlaceLeaves == true){
+        $(clicked).attr("class", "leaves");
+    } else if (minecraft.statusPlaceTree == true){
+        $(clicked).attr("class", "tree");
+    } else if (minecraft.statusPlaceStone == true){
+        $(clicked).attr("class", "stone");
+    }
+}
 
 
 // TOGGLE TRUE/FALSE FOR MINING BLOCKS
@@ -146,70 +210,6 @@ minecraft.placeStone = function(){
 
     minecraft.statusPlaceStone = true;
 }
-
-// REMOVE BLOCK FUNCTION 
-minecraft.blockRemove = function (event){
-    var clicked = event.target;
-
-    if (minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "dirt" 
-    || minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "grass"){
-        $(clicked).css("background", "");
-        $(clicked).removeClass("front dirt").addClass("mined");
-        	
-    } else if (minecraft.statusRemoveTree == true && clicked.parentNode.dataset.name == "tree" 
-    || minecraft.statusRemoveTree == true && clicked.parentNode.dataset.name == "leaves"){
-        $(clicked).css("background", "");
-        $(clicked).removeClass("front tree leaves").addClass("mined");
-
-    } else if (minecraft.statusRemoveStone == true && clicked.parentNode.dataset.name == "stone"){
-        $(clicked).css("background", "");
-        $(clicked).removeClass("front stone").addClass("mined");
-    } 
-}
-
-// ADD BLOCK FUNCTION 
-minecraft.blockAdd = function (event){
-    var clicked = event.target;
-
-    if (minecraft.statusPlaceDirt == true){
-        $(clicked).attr("class", "dirt");
-    } else if (minecraft.statusPlaceLeaves == true){
-        $(clicked).attr("class", "leaves");
-    } else if (minecraft.statusPlaceTree == true){
-        $(clicked).attr("class", "tree");
-    } else if (minecraft.statusPlaceStone == true){
-        $(clicked).attr("class", "stone");
-    }
-}
-
-// INITIALIZE SIDEBAR
-minecraft.initSidebar = function (){
-    var sidebar = $('#sidebar');
-    var inventory = $('.inventory');
-    for (var i =0 ; i < minecraft.tools.length ; i ++){
-        var tool = $("<button/>");
-        tool.css('background-image', `url(img/${minecraft.tools[i]}.png)`);
-        tool.addClass('tools');
-        tool.addClass(minecraft.tools[i]);
-        tool.id = minecraft.tools[i];
-        var toolLabel = $('<img/>');
-        toolLabel.css('img/' + minecraft.tools[i] + "label.png");
-        toolLabel.addClass('tool-label');
-        tool.append(toolLabel);
-        sidebar.prepend(tool);
-    }
-    for (var i = 0; i < minecraft.inventory.length ; i ++) {
-        var resource = $('<button/>');
-        resource.css('background-image', `url(img/${minecraft.inventory[i]}.png)`);
-        resource.addClass('resources');
-        resource.addClass(minecraft.inventory[i]);
-        resource.id = minecraft.inventory[i];
-        label = $('<p>');
-        label.text(0);
-        resource.append(label);
-        inventory.append(resource);
-    }
-}  
 
 // CREATE BLOCK GRID
 minecraft.initGrid = function (){
