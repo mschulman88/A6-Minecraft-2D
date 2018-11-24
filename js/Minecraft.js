@@ -102,7 +102,7 @@ minecraft.blockRemove = function (event){
 
     if (minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "dirt" 
     || minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "grass"){
-        minecraft.counterArray[0]++;
+        minecraft.counterArray[0] = minecraft.counterArray[0]+1;
         $(clicked).css("background", "");
         $(clicked).removeClass("front dirt").addClass("mined");
         	
