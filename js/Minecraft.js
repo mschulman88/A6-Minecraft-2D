@@ -3,15 +3,15 @@ var minecraft = {};
 
 minecraft.statusDirtRemove = false;
 minecraft.statusStoneRemove = false;
+minecraft.statusTreeRemove = false;
 
-minecraft.statusReplace = false;
-minecraft.previousResource;
+minecraft.statusPlaceDirt = false;
+// minecraft.previousResource;
 
 //minecraft global arrays
 minecraft.tools = ['pickaxe', 'shovel', 'axe'];
 minecraft.inventory = ['dirt', 'leaves', 'stone', 'tree'];
 
-// GAME START FUNCTIONS
 // GAME START FUNCTIONS
 $(document).ready(function(){
     minecraft.modal() 
@@ -42,52 +42,74 @@ minecraft.init = function(){
 }
 
 minecraft.bindClick = function(){
-    var grid = document.getElementById("grid");
-    grid.addEventListener("click", minecraft.REMOVE);
-    grid.addEventListener("click", minecraft.ADD);
-    var tool = document.getElementById("tool");
-    tool.addEventListener("click", minecraft.activateDirt);
-    var tool2 = document.getElementById("tool2");
-    tool2.addEventListener("click", minecraft.activateStone);
-    var replace = document.getElementById("replace");
-    replace.addEventListener("click", minecraft.replace);
+    $("#grid").click(minecraft.REMOVE);
+    $("#grid").click(minecraft.ADD);
+    
+    $("#shovel").click(minecraft.activateDirt);
+    $("#pickaxe").click(minecraft.activateStone);
+    $("#axe").click(minecraft.activateTree);
+
+    $("#dirt").click(minecraft.placeDirt);
 };
 
+// elementsArray.forEach(el => el.addEventListener('input', functionThatDoesStuff))
+
 minecraft.activateDirt = function(){
+    minecraft.statusTreeRemove = false;
     minecraft.statusReplace = false;
     minecraft.statusStoneRemove = false;
+
     minecraft.statusDirtRemove = true;
 }
 
 minecraft.activateStone = function(){
+    minecraft.statusTreeRemove = false;
     minecraft.statusReplace = false;
     minecraft.statusDirtRemove = false;
+
     minecraft.statusStoneRemove = true;
 }
 
-minecraft.replace = function(){
-    minecraft.statusReplace = true;
+minecraft.activateTree = function(){
+    minecraft.statusReplace = false;
     minecraft.statusDirtRemove = false;
     minecraft.statusStoneRemove = false;
+
+    minecraft.statusTreeRemove = true;
+}
+
+
+minecraft.placeDirt = function(){
+    minecraft.statusTreeRemove = false;
+    minecraft.statusDirtRemove = false;
+    minecraft.statusStoneRemove = false;
+
+    minecraft.statusPlaceDirt = true;
 }
 
 minecraft.REMOVE = function (event){
     var clicked = event.target;
     // minecraft.previousResource = clicked.dataset.name.value;
+    if (minecraft.statusDirtRemove == true && clicked.parentNode.dataset.name == "dirt" || clicked.parentNode.dataset.name == "grass"){
+        $(clicked).css("background", "");
+        $(clicked).removeClass("front").addClass("mined");
+        	
+    } else if (minecraft.statusTreeRemove == true && clicked.parentNode.dataset.name == "tree" || clicked.parentNode.dataset.name == "leaves"){
+        $(clicked).css("background", "");
+        $(clicked).removeClass("front").addClass("mined");
 
-    if (minecraft.statusDirtRemove == true && clicked.dataset.name == "dirt"){
-        clicked.classList.add('mined');
-    } else if (minecraft.statusStoneRemove == true && clicked.dataset.name == "stone"){
-        clicked.classList.add('mined');
+    } else if (minecraft.statusStoneRemove == true && clicked.parentNode.dataset.name == "stone"){
+        $(clicked).css("background", "");
+        $(clicked).removeClass("front").addClass("mined");
     } 
 }
+
 minecraft.ADD = function (event){
     var clicked = event.target;
-    var grid = document.getElementById('grid');
-     if (minecraft.statusReplace == true){
-        event.stopPropagation(); 
-        grid.removeChild(clicked)
-        //clicked.classList.add('dirt');
+
+    if (minecraft.statusPlaceDirt == true){
+        // event.stopPropagation(); 
+        $(clicked).attr("class", "dirt");
     }
 }
 
@@ -100,6 +122,7 @@ minecraft.initSidebar = function (){
         tool.style.backgroundImage = `url(img/${minecraft.tools[i]}.png)`;
         tool.classList.add('tools');
         tool.classList.add(minecraft.tools[i]);
+        tool.id = minecraft.tools[i];
         var toolLabel = document.createElement('img');
         toolLabel.src= "img/" + minecraft.tools[i] + "label.png";
         toolLabel.classList.add('tool-label');
@@ -111,6 +134,7 @@ minecraft.initSidebar = function (){
         resource.style.backgroundImage = `url(img/${minecraft.inventory[i]}.png)`;
         resource.classList.add('resources');
         resource.classList.add(minecraft.inventory[i]);
+        resource.id = minecraft.inventory[i];
         label = document.createElement('p');
         label.innerHTML = "0";
         resource.append(label);
@@ -966,8 +990,17 @@ minecraft.initGrid = function (){
             var block = document.createElement('div');
             block.classList.add('block');
             block.dataset.name = item.name;
-            block.style.backgroundImage = `url(${item.img})`;
+            // block.style.backgroundImage = `url(${item.img})`;
+
+            var front = document.createElement('div');
+            front.classList.add('front');
+            front.style.backgroundImage = `url(${item.img})`;
+            // var back = document.createElement('div');
+            // back.classList.add('back');
+    
             grid.appendChild(block);
+            block.appendChild(front);
+            // block.appendChild(back);
         })
     });
 }
