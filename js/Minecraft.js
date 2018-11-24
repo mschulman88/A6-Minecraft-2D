@@ -56,7 +56,7 @@ minecraft.initSidebar = function (){
         tool.addClass(minecraft.tools[i]);
         tool.id = minecraft.tools[i];
         var toolLabel = $('<img/>');
-        toolLabel.css('img/' + minecraft.tools[i] + "label.png");
+        toolLabel.attr('src', 'img/' + minecraft.tools[i] + "label.png");
         toolLabel.addClass('tool-label');
         tool.append(toolLabel);
         sidebar.prepend(tool);
