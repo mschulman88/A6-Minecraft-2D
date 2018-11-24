@@ -70,15 +70,15 @@ body {
 }
 
 .tools {
-    background-size: contain;
-    flex-direction: column;
-    height: 15%;
-    align-items: center;
-    width: 10vh;
-    padding: 24%;
-    border-color: darkgrey;
-    background-color: black;
-    background-repeat: no-repeat;
+  background-size: contain;
+  flex-direction: column;
+  height: 15%;
+  align-items: center;
+  width: 10vh;
+  padding: 24%;
+  border-color: darkgrey;
+  background-color: black;
+  background-repeat: no-repeat;
 }
 
 .tool-label {
@@ -109,11 +109,11 @@ p {
   /* ------------------------------- */
   
 .grid {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    justify-content: space-evenly;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  justify-content: space-evenly;
 }
 
 .block,
@@ -133,7 +133,7 @@ p {
 }
 
 .block {
-    position: relative;
+  position: relative;
 }
 
 .grid .block:hover {
@@ -142,17 +142,17 @@ p {
 }
 
 .mined {
-    position: absolute;
-    /* background-image: none; */
-    background-color: black;
+  position: absolute;
+  /* background-image: none; */
+  background-color: black;
 }
 
 .front {
-    position: absolute;
+  position: absolute;
 }
 
 .dirt {
-    background-image: url("../img/dirt.png");
+  background-image: url("../img/dirt.png");
 }
 
 .stone {
@@ -215,7 +215,7 @@ p {
     height: 35px;
     width: 35px;
   }
-  
+
   #sidebar {
     height: 365px;
   }
