@@ -52,20 +52,7 @@ body {
 /* ----- CARD & GRID STYLING ----- */
 /* ------------------------------- */
 
-.grid {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  justify-content: space-evenly;
-}
 
-.block {
-  position: relative;
-  height: 50px;
-  width: 50px;
-  background-size: cover;
-}
 #sidebar {
     flex-direction: column;
     height: 500px;
@@ -129,9 +116,24 @@ p {
 }
 
 .mined {
-    visibility: hidden;
+    /* visibility: hidden; */
+    position: absolute;
+    height: 50px;
+    width: 50px;
     /* background-image: none; */
+    background-color: black;
 }
+
+.back,
+.front {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    background-size: cover;
+}
+/* .back {
+    background-color: black;
+} */
 
 .dirt {
     /* position: relative;
@@ -139,7 +141,6 @@ p {
     width: 50px; */
     background-size: cover;
     background-image: url("../img/dirt.png");
-    /* background-size: cover; */
 }
 
 .stone {
@@ -148,7 +149,6 @@ p {
   width: 50px; */
   background-size: cover;
   background-image: url("../img/stone.png");
-  /* background-size: cover; */
   }
 
   /* Mobile display */
@@ -156,7 +156,9 @@ p {
   .grid {
     max-width: 500px;
   }  
-  .block {
+  .block,
+  .front,
+  .back {
     height: 25px;
     width: 25px;
   }

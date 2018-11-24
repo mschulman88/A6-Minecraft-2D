@@ -3,9 +3,10 @@ var minecraft = {};
 
 minecraft.statusDirtRemove = false;
 minecraft.statusStoneRemove = false;
+minecraft.statusTreeRemove = false;
 
 minecraft.statusReplace = false;
-minecraft.previousResource;
+// minecraft.previousResource;
 
 //minecraft global arrays
 minecraft.tools = ['pickaxe', 'shovel', 'axe'];
@@ -42,29 +43,48 @@ minecraft.init = function(){
 }
 
 minecraft.bindClick = function(){
+    // var gridBlocks = document.querySelectorAll(".block");
+    // gridBlocks.forEach(x => x.addEventListener("click", minecraft.REMOVE));
+    // gridBlocks.forEach(x => x.addEventListener("click", minecraft.ADD));
     var grid = document.getElementById("grid");
     grid.addEventListener("click", minecraft.REMOVE);
-    // var blocks = document.getElementsByClassName("block");
-    // blocks.addEventListener("click", minecraft.ADD);
-    var tool = document.getElementById("tool");
-    tool.addEventListener("click", minecraft.activateDirt);
-    var tool2 = document.getElementById("tool2");
-    tool2.addEventListener("click", minecraft.activateStone);
+    grid.addEventListener("click", minecraft.ADD);
+    
+    var shovel = document.getElementById("shovel");
+    shovel.addEventListener("click", minecraft.activateDirt);
+    var pickaxe = document.getElementById("pickaxe");
+    pickaxe.addEventListener("click", minecraft.activateStone);
+    var axe = document.getElementById("axe");
+    axe.addEventListener("click", minecraft.activateTree);
+
+
     var replace = document.getElementById("replace");
     replace.addEventListener("click", minecraft.replace);
 };
 
+// elementsArray.forEach(el => el.addEventListener('input', functionThatDoesStuff))
+
 minecraft.activateDirt = function(){
+    minecraft.statusTreeRemove = false;
     minecraft.statusReplace = false;
     minecraft.statusStoneRemove = false;
     minecraft.statusDirtRemove = true;
 }
 
 minecraft.activateStone = function(){
+    minecraft.statusTreeRemove = false;
     minecraft.statusReplace = false;
     minecraft.statusDirtRemove = false;
     minecraft.statusStoneRemove = true;
 }
+
+minecraft.activateTree = function(){
+    minecraft.statusReplace = false;
+    minecraft.statusDirtRemove = false;
+    minecraft.statusStoneRemove = false;
+    minecraft.statusTreeRemove = true;
+}
+
 
 minecraft.replace = function(){
     minecraft.statusReplace = true;
@@ -75,23 +95,29 @@ minecraft.replace = function(){
 minecraft.REMOVE = function (event){
     var clicked = event.target;
     // minecraft.previousResource = clicked.dataset.name.value;
-
-    if (minecraft.statusDirtRemove == true && clicked.dataset.name == "dirt"){
+    if (minecraft.statusDirtRemove == true && clicked.parentNode.dataset.name == "dirt" || clicked.parentNode.dataset.name == "grass"){
+        $(clicked).css("background", "");
+        clicked.classList.remove('front');
         clicked.classList.add('mined');
-    } else if (minecraft.statusStoneRemove == true && clicked.dataset.name == "stone"){
+    } else if (minecraft.statusTreeRemove == true && clicked.parentNode.dataset.name == "tree" || clicked.parentNode.dataset.name == "leaves"){
+        $(clicked).css("background", "");
+        clicked.classList.remove('front');
+        clicked.classList.add('mined'); 
+    } else if (minecraft.statusStoneRemove == true && clicked.parentNode.dataset.name == "stone"){
+        $(clicked).css("background", "");
+        clicked.classList.remove('front');
         clicked.classList.add('mined');
     } 
 }
 
-// minecraft.REMOVE = function (event){
-//     var clicked = event.target;
+minecraft.ADD = function (event){
+    var clicked = event.target;
 
-//     if (minecraft.statusReplace == true){
-//         event.stopPropagation(); 
-//         clicked.classList.remove('mined');
-//         clicked.classList.add('dirt');
-//     }
-// }
+    if (minecraft.statusReplace == true){
+        // event.stopPropagation(); 
+        $(clicked).attr("class", "dirt");
+    }
+}
 
 
 minecraft.initSidebar = function (){
@@ -102,6 +128,7 @@ minecraft.initSidebar = function (){
         tool.style.backgroundImage = `url(img/${minecraft.tools[i]}.png)`;
         tool.classList.add('tools');
         tool.classList.add(minecraft.tools[i]);
+        tool.id = minecraft.tools[i];
         var toolLabel = document.createElement('img');
         toolLabel.src= "img/" + minecraft.tools[i] + "label.png";
         toolLabel.classList.add('tool-label');
@@ -968,8 +995,17 @@ minecraft.initGrid = function (){
             var block = document.createElement('div');
             block.classList.add('block');
             block.dataset.name = item.name;
-            block.style.backgroundImage = `url(${item.img})`;
+            // block.style.backgroundImage = `url(${item.img})`;
+
+            var front = document.createElement('div');
+            front.classList.add('front');
+            front.style.backgroundImage = `url(${item.img})`;
+            // var back = document.createElement('div');
+            // back.classList.add('back');
+    
             grid.appendChild(block);
+            block.appendChild(front);
+            // block.appendChild(back);
         })
     });
 }
