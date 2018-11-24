@@ -95,10 +95,7 @@ minecraft.blockRemove = function (event){
 
     if (minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "dirt" 
     || minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "grass"){
-<<<<<<< HEAD
         minecraft.counterArray[0] = minecraft.counterArray[0]+1;
-=======
->>>>>>> 6759bbae5a81e34803805b124131f4d459bbe829
         $(clicked).css("background", "");
         $(clicked).removeClass("front dirt").addClass("mined");
         	
@@ -1053,6 +1050,35 @@ minecraft.initGrid = function (){
 
 
     // CREATE GRID
+
+// CREATE GRID
+
+    // JQUERY CONVERSION ATTEMPT --- BUG WITH SETTING DATASET NAME ATTRIBUTE
+    // var game = $('#game');
+    // var grid = $('<section/>');
+    // grid.attr('class', 'grid');
+    // grid.attr('id', 'grid');
+    // game.append(grid);
+
+    // blockGrid.forEach(Array =>{
+    //     Array.forEach(item => {
+    //         var block = $('<div/>');
+    //         block.addClass('block');
+    //         block.data('name', `item.name`);
+    //         // block.style.backgroundImage = `url(${item.img})`;
+
+    //         var front = $('<div/>');
+    //         front.addClass('front');
+    //         front.css('backgroundImage', `url(${item.img})`);
+    //         // var back = document.createElement('div');
+    //         // back.classList.add('back');
+
+    //         grid.append(block);
+    //         block.append(front);
+    //         // block.appendChild(back);
+    //     })
+    // });
+
     var game = document.getElementById('game');
     var grid = document.createElement('section');
     grid.setAttribute('class', 'grid');
