@@ -151,17 +151,19 @@ minecraft.placeStone = function(){
 minecraft.blockRemove = function (event){
     var clicked = event.target;
 
-    if (minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "dirt" || clicked.parentNode.dataset.name == "grass"){
+    if (minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "dirt" 
+    || minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "grass"){
         $(clicked).css("background", "");
-        $(clicked).removeClass("front").addClass("mined");
+        $(clicked).removeClass("front dirt").addClass("mined");
         	
-    } else if (minecraft.statusRemoveTree == true && clicked.parentNode.dataset.name == "tree" || clicked.parentNode.dataset.name == "leaves"){
+    } else if (minecraft.statusRemoveTree == true && clicked.parentNode.dataset.name == "tree" 
+    || minecraft.statusRemoveTree == true && clicked.parentNode.dataset.name == "leaves"){
         $(clicked).css("background", "");
-        $(clicked).removeClass("front").addClass("mined");
+        $(clicked).removeClass("front tree leaves").addClass("mined");
 
     } else if (minecraft.statusRemoveStone == true && clicked.parentNode.dataset.name == "stone"){
         $(clicked).css("background", "");
-        $(clicked).removeClass("front").addClass("mined");
+        $(clicked).removeClass("front stone").addClass("mined");
     } 
 }
 
