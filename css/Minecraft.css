@@ -18,8 +18,10 @@ body {
   justify-content: center;
   width: 87%;
 }
-
+/* ------------------------------- */
 /* -------- LANDING PAGE --------- */
+/* ------------------------------- */
+
 .landing {
   background-image: url("../img/minecraft.jpg");
   background-size: cover;
@@ -49,9 +51,8 @@ body {
 }
 
 /* ------------------------------- */
-/* ----- CARD & GRID STYLING ----- */
+/* ------ SIDEBAR   STYLING ------ */
 /* ------------------------------- */
-
 
 #sidebar {
     flex-direction: column;
@@ -97,7 +98,7 @@ p {
 }
   
   /* ------------------------------- */
-  /* ----- BLOCK & GRID STYLING ----- */
+  /* ----- BLOCK & GRID STYLING ---- */
   /* ------------------------------- */
   
 .grid {
@@ -114,6 +115,10 @@ p {
     width: 50px;
     background-size: cover;
 }
+/* 
+.grid .block:hover {
+  border: solid 1px yellow;
+} */
 
 .mined {
     /* visibility: hidden; */
@@ -151,7 +156,26 @@ p {
   background-image: url("../img/stone.png");
   }
 
-  /* Mobile display */
+.leaves {
+  /* position: relative;
+  height: 50px;
+  width: 50px; */
+  background-size: cover;
+  background-image: url("../img/leaves.png");
+}
+
+.tree {
+  /* position: relative;
+  height: 50px;
+  width: 50px; */
+  background-size: cover;
+  background-image: url("../img/tree.png");
+}
+
+  /* ------------------------------- */
+  /* -------- MOBILE STYLING ------- */
+  /* ------------------------------- */
+
 @media only screen and (max-width: 640px) {
   .grid {
     max-width: 450px;

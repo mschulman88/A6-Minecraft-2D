@@ -1,23 +1,26 @@
 // INITIALIZE NAMESPACE
 var minecraft = {};
 
-minecraft.statusDirtRemove = false;
-minecraft.statusStoneRemove = false;
-minecraft.statusTreeRemove = false;
-
-minecraft.statusPlaceDirt = false;
-// minecraft.previousResource;
-
-//minecraft global arrays
+// GLOBAL TOOL & INVENTORY ARRAY
 minecraft.tools = ['pickaxe', 'shovel', 'axe'];
 minecraft.inventory = ['dirt', 'leaves', 'stone', 'tree'];
+
+// INITIAL FALSE VALUES
+minecraft.statusRemoveDirt = false;
+minecraft.statusRemoveStone = false;
+minecraft.statusRemoveTree = false;
+
+minecraft.statusPlaceDirt = false;
+minecraft.statusPlaceLeaves = false;
+minecraft.statusPlaceTree = false;
+minecraft.statusPlaceStone = false;
 
 // GAME START FUNCTIONS
 $(document).ready(function(){
     minecraft.modal() 
 });
 
-//Modal
+// MODAL
 minecraft.modal = function (){
     var modal = $('#modal')
     var body = $('body')
@@ -35,85 +38,149 @@ minecraft.modal = function (){
     });
 }
 
+// INIT
 minecraft.init = function(){
     minecraft.initGrid();
     minecraft.initSidebar();
     minecraft.bindClick();
 }
 
+// BIND CLICKS
 minecraft.bindClick = function(){
-    $("#grid").click(minecraft.REMOVE);
-    $("#grid").click(minecraft.ADD);
+    $("#grid").click(minecraft.blockRemove);
+    $("#grid").click(minecraft.blockAdd);
     
     $("#shovel").click(minecraft.activateDirt);
     $("#pickaxe").click(minecraft.activateStone);
     $("#axe").click(minecraft.activateTree);
 
     $("#dirt").click(minecraft.placeDirt);
+    $("#leaves").click(minecraft.placeLeaves);
+    $("#tree").click(minecraft.placeTree);
+    $("#stone").click(minecraft.placeStone);
 };
 
-// elementsArray.forEach(el => el.addEventListener('input', functionThatDoesStuff))
 
+// TOGGLE TRUE/FALSE FOR MINING BLOCKS
 minecraft.activateDirt = function(){
-    minecraft.statusTreeRemove = false;
-    minecraft.statusReplace = false;
-    minecraft.statusStoneRemove = false;
+    minecraft.statusPlaceDirt = false;
+    minecraft.statusPlaceLeaves = false;
+    minecraft.statusPlaceTree = false;
+    minecraft.statusPlaceStone = false;
+    
+    minecraft.statusRemoveTree = false;
+    minecraft.statusRemoveStone = false;
 
-    minecraft.statusDirtRemove = true;
+    minecraft.statusRemoveDirt = true;
 }
 
 minecraft.activateStone = function(){
-    minecraft.statusTreeRemove = false;
-    minecraft.statusReplace = false;
-    minecraft.statusDirtRemove = false;
+    minecraft.statusPlaceDirt = false;
+    minecraft.statusPlaceLeaves = false;
+    minecraft.statusPlaceTree = false;
+    minecraft.statusPlaceStone = false;
+    
+    minecraft.statusRemoveTree = false;
+    minecraft.statusRemoveDirt = false;
 
-    minecraft.statusStoneRemove = true;
+    minecraft.statusRemoveStone = true;
 }
 
 minecraft.activateTree = function(){
-    minecraft.statusReplace = false;
-    minecraft.statusDirtRemove = false;
-    minecraft.statusStoneRemove = false;
+    minecraft.statusPlaceDirt = false;
+    minecraft.statusPlaceLeaves = false;
+    minecraft.statusPlaceTree = false;
+    minecraft.statusPlaceStone = false;
+    
+    minecraft.statusRemoveDirt = false;
+    minecraft.statusRemoveStone = false;
 
-    minecraft.statusTreeRemove = true;
+    minecraft.statusRemoveTree = true;
 }
 
-
+// TOGGLE TRUE/FALSE FOR ADDING BLOCKS
 minecraft.placeDirt = function(){
-    minecraft.statusTreeRemove = false;
-    minecraft.statusDirtRemove = false;
-    minecraft.statusStoneRemove = false;
+    minecraft.statusRemoveTree = false;
+    minecraft.statusRemoveDirt = false;
+    minecraft.statusRemoveStone = false;
+
+    minecraft.statusPlaceLeaves = false;
+    minecraft.statusPlaceTree = false;
+    minecraft.statusPlaceStone = false;
 
     minecraft.statusPlaceDirt = true;
 }
 
-minecraft.REMOVE = function (event){
+minecraft.placeLeaves = function(){
+    minecraft.statusRemoveTree = false;
+    minecraft.statusRemoveDirt = false;
+    minecraft.statusRemoveStone = false;
+
+    minecraft.statusPlaceDirt = false;
+    minecraft.statusPlaceTree = false;
+    minecraft.statusPlaceStone = false;
+
+    minecraft.statusPlaceLeaves = true;
+}
+
+minecraft.placeTree = function(){
+    minecraft.statusRemoveTree = false;
+    minecraft.statusRemoveDirt = false;
+    minecraft.statusRemoveStone = false;
+
+    minecraft.statusPlaceDirt = false;
+    minecraft.statusPlaceLeaves = false;
+    minecraft.statusPlaceStone = false;
+
+    minecraft.statusPlaceTree = true;
+}
+
+minecraft.placeStone = function(){
+    minecraft.statusRemoveTree = false;
+    minecraft.statusRemoveDirt = false;
+    minecraft.statusRemoveStone = false;
+
+    minecraft.statusPlaceDirt = false;
+    minecraft.statusPlaceLeaves = false;
+    minecraft.statusPlaceTree = false;
+
+    minecraft.statusPlaceStone = true;
+}
+
+// REMOVE BLOCK FUNCTION 
+minecraft.blockRemove = function (event){
     var clicked = event.target;
-    // minecraft.previousResource = clicked.dataset.name.value;
-    if (minecraft.statusDirtRemove == true && clicked.parentNode.dataset.name == "dirt" || clicked.parentNode.dataset.name == "grass"){
+
+    if (minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "dirt" || clicked.parentNode.dataset.name == "grass"){
         $(clicked).css("background", "");
         $(clicked).removeClass("front").addClass("mined");
         	
-    } else if (minecraft.statusTreeRemove == true && clicked.parentNode.dataset.name == "tree" || clicked.parentNode.dataset.name == "leaves"){
+    } else if (minecraft.statusRemoveTree == true && clicked.parentNode.dataset.name == "tree" || clicked.parentNode.dataset.name == "leaves"){
         $(clicked).css("background", "");
         $(clicked).removeClass("front").addClass("mined");
 
-    } else if (minecraft.statusStoneRemove == true && clicked.parentNode.dataset.name == "stone"){
+    } else if (minecraft.statusRemoveStone == true && clicked.parentNode.dataset.name == "stone"){
         $(clicked).css("background", "");
         $(clicked).removeClass("front").addClass("mined");
     } 
 }
 
-minecraft.ADD = function (event){
+// ADD BLOCK FUNCTION 
+minecraft.blockAdd = function (event){
     var clicked = event.target;
 
     if (minecraft.statusPlaceDirt == true){
-        // event.stopPropagation(); 
         $(clicked).attr("class", "dirt");
+    } else if (minecraft.statusPlaceLeaves == true){
+        $(clicked).attr("class", "leaves");
+    } else if (minecraft.statusPlaceTree == true){
+        $(clicked).attr("class", "tree");
+    } else if (minecraft.statusPlaceStone == true){
+        $(clicked).attr("class", "stone");
     }
 }
 
-
+// INITIALIZE SIDEBAR
 minecraft.initSidebar = function (){
     var sidebar = $('#sidebar');
     var inventory = $('.inventory');
@@ -142,6 +209,7 @@ minecraft.initSidebar = function (){
     }
 }  
 
+// CREATE BLOCK GRID
 minecraft.initGrid = function (){
     // ARRAY OF BLOCKS
     var blockGrid = [
