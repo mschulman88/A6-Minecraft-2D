@@ -187,25 +187,25 @@ minecraft.initSidebar = function (){
     var sidebar = $('#sidebar');
     var inventory = $('.inventory');
     for (var i =0 ; i < minecraft.tools.length ; i ++){
-        var tool = document.createElement('button');
-        tool.style.backgroundImage = `url(img/${minecraft.tools[i]}.png)`;
-        tool.classList.add('tools');
-        tool.classList.add(minecraft.tools[i]);
+        var tool = $("<button/>");
+        tool.css('background-image', `url(img/${minecraft.tools[i]}.png)`);
+        tool.addClass('tools');
+        tool.addClass(minecraft.tools[i]);
         tool.id = minecraft.tools[i];
-        var toolLabel = document.createElement('img');
-        toolLabel.src= "img/" + minecraft.tools[i] + "label.png";
-        toolLabel.classList.add('tool-label');
+        var toolLabel = $('<img/>');
+        toolLabel.css('img/' + minecraft.tools[i] + "label.png");
+        toolLabel.addClass('tool-label');
         tool.append(toolLabel);
         sidebar.prepend(tool);
     }
     for (var i = 0; i < minecraft.inventory.length ; i ++) {
-        var resource = document.createElement('button');
-        resource.style.backgroundImage = `url(img/${minecraft.inventory[i]}.png)`;
-        resource.classList.add('resources');
-        resource.classList.add(minecraft.inventory[i]);
+        var resource = $('<button/>');
+        resource.css('background-image', `url(img/${minecraft.inventory[i]}.png)`);
+        resource.addClass('resources');
+        resource.addClass(minecraft.inventory[i]);
         resource.id = minecraft.inventory[i];
-        label = document.createElement('p');
-        label.innerHTML = "0";
+        label = $('<p>');
+        label.text(0);
         resource.append(label);
         inventory.append(resource);
     }
