@@ -109,8 +109,8 @@ minecraft.blockRemove = function (event){
         	
     } else if (minecraft.statusRemoveTree == true && clicked.parentNode.dataset.name == "tree" 
     || minecraft.statusRemoveTree == true && clicked.parentNode.dataset.name == "leaves"){
-        minecraft.counterArray[1] = minecraft.counterArray[1]+1;
-        minecraft.counterArray[3] = minecraft.counterArray[3]+1;
+        minecraft.counterArray[1] = minecraft.counterArray[1]+2;
+        minecraft.counterArray[3] = minecraft.counterArray[3]+2;
         $(clicked).css("background", "");
         $(clicked).removeClass("front tree leaves").addClass("mined");
 

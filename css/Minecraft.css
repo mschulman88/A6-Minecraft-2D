@@ -147,7 +147,7 @@ p {
 .mined {
   position: absolute;
   /* background-image: none; */
-  background-color: black;
+  background-color: white;
 }
 
 .front {
