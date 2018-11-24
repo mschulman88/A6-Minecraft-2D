@@ -1,8 +1,8 @@
-/* *,
+*,
 *::before,
 *::after {
   box-sizing: border-box;
-} */
+}
 
 body {
   margin: 20px 0;
@@ -115,10 +115,11 @@ p {
     width: 50px;
     background-size: cover;
 }
-/* 
+
 .grid .block:hover {
   border: solid 1px yellow;
-} */
+  opacity: .8;
+}
 
 .mined {
     position: absolute;
