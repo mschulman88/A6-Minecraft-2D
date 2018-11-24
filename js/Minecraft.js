@@ -5,12 +5,6 @@ var minecraft = {};
 minecraft.tools = ['pickaxe', 'shovel', 'axe'];
 minecraft.inventory = ['dirt', 'leaves', 'stone', 'tree'];
 
-minecraft.countDirt = 0;
-minecraft.countLeaves = 0;
-minecraft.countTree = 0;
-minecraft.countStone = 0;
-minecraft.counterArray = [minecraft.countDirt, minecraft.countLeaves, minecraft.countTree, minecraft.countStone]
-
 // INITIAL FALSE VALUES
 minecraft.statusRemoveDirt = false;
 minecraft.statusRemoveStone = false;
@@ -60,8 +54,8 @@ minecraft.initSidebar = function (){
         tool.css('background-image', `url(img/${minecraft.tools[i]}.png)`);
         tool.addClass('tools');
         tool.addClass(minecraft.tools[i]);
-        tool.attr('id', minecraft.tools[i]);
-        var toolLabel = $('<img/>');
+        tool.id = minecraft.tools[i];
+        var toolLabel = $('<img/>'); 
         toolLabel.attr('src', 'img/' + minecraft.tools[i] + "label.png");
         toolLabel.addClass('tool-label');
         tool.append(toolLabel);
@@ -72,10 +66,9 @@ minecraft.initSidebar = function (){
         resource.css('background-image', `url(img/${minecraft.inventory[i]}.png)`);
         resource.addClass('resources');
         resource.addClass(minecraft.inventory[i]);
-        resource.attr('id', minecraft.inventory[i]);
+        resource.id = minecraft.inventory[i];
         label = $('<p>');
-        label.attr('id', "count" + minecraft.inventory[i]);
-        label.html(minecraft.counterArray[i]);
+        label.text(0);
         resource.append(label);
         inventory.append(resource);
     }
@@ -102,7 +95,6 @@ minecraft.blockRemove = function (event){
 
     if (minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "dirt" 
     || minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "grass"){
-        minecraft.counterArray[0]++;
         $(clicked).css("background", "");
         $(clicked).removeClass("front dirt").addClass("mined");
         	
@@ -122,13 +114,13 @@ minecraft.blockAdd = function (event){
     var clicked = event.target;
 
     if (minecraft.statusPlaceDirt == true){
-        $(clicked).removeClass().addClass("dirt");
+        $(clicked).attr("class", "dirt");
     } else if (minecraft.statusPlaceLeaves == true){
-        $(clicked).removeClass().addClass("leaves");
+        $(clicked).attr("class", "leaves");
     } else if (minecraft.statusPlaceTree == true){
-        $(clicked).removeClass().addClass("tree");
+        $(clicked).attr("class", "tree");
     } else if (minecraft.statusPlaceStone == true){
-        $(clicked).removeClass().addClass("stone");
+        $(clicked).attr("class", "stone");
     }
 }
 
