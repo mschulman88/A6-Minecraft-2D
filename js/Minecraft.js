@@ -54,6 +54,7 @@ minecraft.init = function(){
 // INITIALIZE SIDEBAR
 minecraft.initSidebar = function (){
     var sidebar = $('#sidebar');
+    sidebar.removeClass('hidden');
     var inventory = $('.inventory');
     for (var i =0 ; i < minecraft.tools.length ; i ++){
         var tool = $("<button/>");

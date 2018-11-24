@@ -65,8 +65,11 @@ body {
   display: flex;
   position: absolute;
   align-items: center;
-  z-index: 1234;
   margin-inline-start: 48%;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .tools {
