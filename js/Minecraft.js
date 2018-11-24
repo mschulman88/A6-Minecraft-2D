@@ -13,7 +13,6 @@ minecraft.tools = ['pickaxe', 'shovel', 'axe'];
 minecraft.inventory = ['dirt', 'leaves', 'stone', 'tree'];
 
 // GAME START FUNCTIONS
-// GAME START FUNCTIONS
 $(document).ready(function(){
     minecraft.modal() 
 });
@@ -43,23 +42,14 @@ minecraft.init = function(){
 }
 
 minecraft.bindClick = function(){
-    // var gridBlocks = document.querySelectorAll(".block");
-    // gridBlocks.forEach(x => x.addEventListener("click", minecraft.REMOVE));
-    // gridBlocks.forEach(x => x.addEventListener("click", minecraft.ADD));
-    var grid = document.getElementById("grid");
-    grid.addEventListener("click", minecraft.REMOVE);
-    grid.addEventListener("click", minecraft.ADD);
+    $("#grid").click(minecraft.REMOVE);
+    $("#grid").click(minecraft.ADD);
     
-    var shovel = document.getElementById("shovel");
-    shovel.addEventListener("click", minecraft.activateDirt);
-    var pickaxe = document.getElementById("pickaxe");
-    pickaxe.addEventListener("click", minecraft.activateStone);
-    var axe = document.getElementById("axe");
-    axe.addEventListener("click", minecraft.activateTree);
+    $("#shovel").click(minecraft.activateDirt);
+    $("#pickaxe").click(minecraft.activateStone);
+    $("#axe").click(minecraft.activateTree);
 
-
-    var placeDirt = document.getElementById("dirt");
-    placeDirt.addEventListener("click", minecraft.placeDirt);
+    $("#dirt").click(minecraft.placeDirt);
 };
 
 // elementsArray.forEach(el => el.addEventListener('input', functionThatDoesStuff))
@@ -68,6 +58,7 @@ minecraft.activateDirt = function(){
     minecraft.statusTreeRemove = false;
     minecraft.statusReplace = false;
     minecraft.statusStoneRemove = false;
+
     minecraft.statusDirtRemove = true;
 }
 
@@ -75,6 +66,7 @@ minecraft.activateStone = function(){
     minecraft.statusTreeRemove = false;
     minecraft.statusReplace = false;
     minecraft.statusDirtRemove = false;
+
     minecraft.statusStoneRemove = true;
 }
 
@@ -82,14 +74,17 @@ minecraft.activateTree = function(){
     minecraft.statusReplace = false;
     minecraft.statusDirtRemove = false;
     minecraft.statusStoneRemove = false;
+
     minecraft.statusTreeRemove = true;
 }
 
 
 minecraft.placeDirt = function(){
-    minecraft.statusPlaceDirt = true;
+    minecraft.statusTreeRemove = false;
     minecraft.statusDirtRemove = false;
     minecraft.statusStoneRemove = false;
+
+    minecraft.statusPlaceDirt = true;
 }
 
 minecraft.REMOVE = function (event){
@@ -97,16 +92,15 @@ minecraft.REMOVE = function (event){
     // minecraft.previousResource = clicked.dataset.name.value;
     if (minecraft.statusDirtRemove == true && clicked.parentNode.dataset.name == "dirt" || clicked.parentNode.dataset.name == "grass"){
         $(clicked).css("background", "");
-        clicked.classList.remove('front');
-        clicked.classList.add('mined');
+        $(clicked).removeClass("front").addClass("mined");
+        	
     } else if (minecraft.statusTreeRemove == true && clicked.parentNode.dataset.name == "tree" || clicked.parentNode.dataset.name == "leaves"){
         $(clicked).css("background", "");
-        clicked.classList.remove('front');
-        clicked.classList.add('mined'); 
+        $(clicked).removeClass("front").addClass("mined");
+
     } else if (minecraft.statusStoneRemove == true && clicked.parentNode.dataset.name == "stone"){
         $(clicked).css("background", "");
-        clicked.classList.remove('front');
-        clicked.classList.add('mined');
+        $(clicked).removeClass("front").addClass("mined");
     } 
 }
 
