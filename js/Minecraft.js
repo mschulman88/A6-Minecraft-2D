@@ -5,6 +5,12 @@ var minecraft = {};
 minecraft.tools = ['pickaxe', 'shovel', 'axe'];
 minecraft.inventory = ['dirt', 'leaves', 'stone', 'tree'];
 
+minecraft.countDirt = 0;
+minecraft.countLeaves = 0;
+minecraft.countTree = 0;
+minecraft.countStone = 0;
+minecraft.counterArray = [minecraft.countDirt, minecraft.countLeaves, minecraft.countTree, minecraft.countStone]
+
 // INITIAL FALSE VALUES
 minecraft.statusRemoveDirt = false;
 minecraft.statusRemoveStone = false;
@@ -54,8 +60,8 @@ minecraft.initSidebar = function (){
         tool.css('background-image', `url(img/${minecraft.tools[i]}.png)`);
         tool.addClass('tools');
         tool.addClass(minecraft.tools[i]);
-        tool.id = minecraft.tools[i];
-        var toolLabel = $('<img/>'); 
+        tool.attr('id', minecraft.tools[i]);
+        var toolLabel = $('<img/>');
         toolLabel.attr('src', 'img/' + minecraft.tools[i] + "label.png");
         toolLabel.addClass('tool-label');
         tool.append(toolLabel);
@@ -66,9 +72,10 @@ minecraft.initSidebar = function (){
         resource.css('background-image', `url(img/${minecraft.inventory[i]}.png)`);
         resource.addClass('resources');
         resource.addClass(minecraft.inventory[i]);
-        resource.id = minecraft.inventory[i];
+        resource.attr('id', minecraft.inventory[i]);
         label = $('<p>');
-        label.text(0);
+        label.attr('id', "count" + minecraft.inventory[i]);
+        label.html(minecraft.counterArray[i]);
         resource.append(label);
         inventory.append(resource);
     }
@@ -115,13 +122,13 @@ minecraft.blockAdd = function (event){
     var clicked = event.target;
 
     if (minecraft.statusPlaceDirt == true){
-        $(clicked).attr("class", "dirt");
+        $(clicked).removeClass().addClass("dirt");
     } else if (minecraft.statusPlaceLeaves == true){
-        $(clicked).attr("class", "leaves");
+        $(clicked).removeClass().addClass("leaves");
     } else if (minecraft.statusPlaceTree == true){
-        $(clicked).attr("class", "tree");
+        $(clicked).removeClass().addClass("tree");
     } else if (minecraft.statusPlaceStone == true){
-        $(clicked).attr("class", "stone");
+        $(clicked).removeClass().addClass("stone");
     }
 }
 
@@ -1050,8 +1057,31 @@ minecraft.initGrid = function (){
 
 
     // CREATE GRID
+    var game = document.getElementById('game');
+    var grid = document.createElement('section');
+    grid.setAttribute('class', 'grid');
+    grid.setAttribute('id', 'grid');
+    game.appendChild(grid);
 
-// CREATE GRID
+    blockGrid.forEach(Array =>{
+        Array.forEach(item => {
+            var block = document.createElement('div');
+            block.classList.add('block');
+            block.dataset.name = item.name;
+            // block.style.backgroundImage = `url(${item.img})`;
+
+            var front = document.createElement('div');
+            front.classList.add('front');
+            front.style.backgroundImage = `url(${item.img})`;
+            // var back = document.createElement('div');
+            // back.classList.add('back');
+    
+            grid.appendChild(block);
+            block.appendChild(front);
+            // block.appendChild(back);
+        })
+    });
+}
 
     // JQUERY CONVERSION ATTEMPT --- BUG WITH SETTING DATASET NAME ATTRIBUTE
     // var game = $('#game');
@@ -1078,29 +1108,3 @@ minecraft.initGrid = function (){
     //         // block.appendChild(back);
     //     })
     // });
-
-    var game = document.getElementById('game');
-    var grid = document.createElement('section');
-    grid.setAttribute('class', 'grid');
-    grid.setAttribute('id', 'grid');
-    game.appendChild(grid);
-
-    blockGrid.forEach(Array =>{
-        Array.forEach(item => {
-            var block = document.createElement('div');
-            block.classList.add('block');
-            block.dataset.name = item.name;
-            // block.style.backgroundImage = `url(${item.img})`;
-
-            var front = document.createElement('div');
-            front.classList.add('front');
-            front.style.backgroundImage = `url(${item.img})`;
-            // var back = document.createElement('div');
-            // back.classList.add('back');
-    
-            grid.appendChild(block);
-            block.appendChild(front);
-            // block.appendChild(back);
-        })
-    });
-}
