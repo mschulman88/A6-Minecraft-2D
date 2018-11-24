@@ -121,7 +121,6 @@ p {
 } */
 
 .mined {
-    /* visibility: hidden; */
     position: absolute;
     height: 50px;
     width: 50px;
@@ -136,38 +135,23 @@ p {
     position: absolute;
     background-size: cover;
 }
-/* .back {
-    background-color: black;
-} */
 
 .dirt {
-    /* position: relative;
-    /* height: 50px;
-    width: 50px; */
     background-size: cover;
     background-image: url("../img/dirt.png");
 }
 
 .stone {
-  /* position: relative;
-  height: 50px;
-  width: 50px; */
   background-size: cover;
   background-image: url("../img/stone.png");
   }
 
 .leaves {
-  /* position: relative;
-  height: 50px;
-  width: 50px; */
   background-size: cover;
   background-image: url("../img/leaves.png");
 }
 
 .tree {
-  /* position: relative;
-  height: 50px;
-  width: 50px; */
   background-size: cover;
   background-image: url("../img/tree.png");
 }

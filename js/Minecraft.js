@@ -1075,17 +1075,13 @@ minecraft.initGrid = function (){
             var block = document.createElement('div');
             block.classList.add('block');
             block.dataset.name = item.name;
-            // block.style.backgroundImage = `url(${item.img})`;
 
             var front = document.createElement('div');
             front.classList.add('front');
             front.style.backgroundImage = `url(${item.img})`;
-            // var back = document.createElement('div');
-            // back.classList.add('back');
     
             grid.appendChild(block);
             block.appendChild(front);
-            // block.appendChild(back);
         })
     });
 }
