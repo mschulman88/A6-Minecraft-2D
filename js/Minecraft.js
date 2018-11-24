@@ -5,7 +5,7 @@ minecraft.statusDirtRemove = false;
 minecraft.statusStoneRemove = false;
 minecraft.statusTreeRemove = false;
 
-minecraft.statusReplace = false;
+minecraft.statusPlaceDirt = false;
 // minecraft.previousResource;
 
 //minecraft global arrays
@@ -58,8 +58,8 @@ minecraft.bindClick = function(){
     axe.addEventListener("click", minecraft.activateTree);
 
 
-    var replace = document.getElementById("replace");
-    replace.addEventListener("click", minecraft.replace);
+    var placeDirt = document.getElementById("dirt");
+    placeDirt.addEventListener("click", minecraft.placeDirt);
 };
 
 // elementsArray.forEach(el => el.addEventListener('input', functionThatDoesStuff))
@@ -86,8 +86,8 @@ minecraft.activateTree = function(){
 }
 
 
-minecraft.replace = function(){
-    minecraft.statusReplace = true;
+minecraft.placeDirt = function(){
+    minecraft.statusPlaceDirt = true;
     minecraft.statusDirtRemove = false;
     minecraft.statusStoneRemove = false;
 }
@@ -113,7 +113,7 @@ minecraft.REMOVE = function (event){
 minecraft.ADD = function (event){
     var clicked = event.target;
 
-    if (minecraft.statusReplace == true){
+    if (minecraft.statusPlaceDirt == true){
         // event.stopPropagation(); 
         $(clicked).attr("class", "dirt");
     }
@@ -140,6 +140,7 @@ minecraft.initSidebar = function (){
         resource.style.backgroundImage = `url(img/${minecraft.inventory[i]}.png)`;
         resource.classList.add('resources');
         resource.classList.add(minecraft.inventory[i]);
+        resource.id = minecraft.inventory[i];
         label = document.createElement('p');
         label.innerHTML = "0";
         resource.append(label);
