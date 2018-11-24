@@ -33,7 +33,7 @@ minecraft.modal = function (){
     body.addClass('landing')
     var text = $('<div></div>')
     modal.append(text)
-    var instructions = "Select a theme and create your own 2D world. You can use tools such as an axe, pickaxe, to acquire resources and build stuff."
+    var instructions = "Select a theme and create your own 2D world. You can use tools such as an axe, shovel and pickaxe to acquire resources and build things!"
     text.append(instructions)
     var start_button = $('<button>Start Game</button>')
     modal.append(start_button)
