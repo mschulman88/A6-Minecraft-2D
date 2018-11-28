@@ -5,6 +5,12 @@ var minecraft = {};
 minecraft.tools = ['pickaxe', 'shovel', 'axe'];
 minecraft.inventory = ['dirt', 'leaves', 'stone', 'tree'];
 
+minecraft.countDirt = 0;
+minecraft.countLeaves = 0;
+minecraft.countTree = 0;
+minecraft.countStone = 0;
+minecraft.counterArray = [minecraft.countDirt, minecraft.countLeaves, minecraft.countTree, minecraft.countStone]
+
 // INITIAL FALSE VALUES
 minecraft.statusRemoveDirt = false;
 minecraft.statusRemoveStone = false;
@@ -54,7 +60,7 @@ minecraft.initSidebar = function (){
         tool.css('background-image', `url(img/${minecraft.tools[i]}.png)`);
         tool.addClass('tools');
         tool.addClass(minecraft.tools[i]);
-        tool.id = minecraft.tools[i];
+        tool.attr('id', minecraft.tools[i]);
         var toolLabel = $('<img/>'); 
         toolLabel.attr('src', 'img/' + minecraft.tools[i] + "label.png");
         toolLabel.addClass('tool-label');
@@ -66,9 +72,9 @@ minecraft.initSidebar = function (){
         resource.css('background-image', `url(img/${minecraft.inventory[i]}.png)`);
         resource.addClass('resources');
         resource.addClass(minecraft.inventory[i]);
-        resource.id = minecraft.inventory[i];
+        resource.attr('id', minecraft.inventory[i]);
         label = $('<p>');
-        label.text(0);
+        label.text(minecraft.counterArray[i]);
         resource.append(label);
         inventory.append(resource);
     }
@@ -95,10 +101,9 @@ minecraft.blockRemove = function (event){
 
     if (minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "dirt" 
     || minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "grass"){
-<<<<<<< HEAD
-        minecraft.counterArray[0] = minecraft.counterArray[0]+1;
-=======
->>>>>>> 6759bbae5a81e34803805b124131f4d459bbe829
+        console.log(minecraft.counterArray[0]);
+        var counter = parseInt(minecraft.counterArray[0])+1;
+        minecraft.counterArray[0] = counter;
         $(clicked).css("background", "");
         $(clicked).removeClass("front dirt").addClass("mined");
         	
