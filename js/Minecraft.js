@@ -33,7 +33,7 @@ minecraft.modal = function (){
     body.addClass('landing')
     var text = $('<div></div>')
     modal.append(text)
-    var instructions = "Select a theme and create your own 2D world. You can use tools such as an axe, pickaxe, to acquire resources and build stuff."
+    var instructions = "Select a theme and create your own 2D world. You can use tools such as an axe, shovel and pickaxe to acquire resources and build things!"
     text.append(instructions)
     var start_button = $('<button>Start Game</button>')
     modal.append(start_button)
@@ -54,6 +54,7 @@ minecraft.init = function(){
 // INITIALIZE SIDEBAR
 minecraft.initSidebar = function (){
     var sidebar = $('#sidebar');
+    sidebar.removeClass('hidden');
     var inventory = $('.inventory');
     for (var i =0 ; i < minecraft.tools.length ; i ++){
         var tool = $("<button/>");
@@ -61,7 +62,7 @@ minecraft.initSidebar = function (){
         tool.addClass('tools');
         tool.addClass(minecraft.tools[i]);
         tool.attr('id', minecraft.tools[i]);
-        var toolLabel = $('<img/>'); 
+        var toolLabel = $('<img/>');
         toolLabel.attr('src', 'img/' + minecraft.tools[i] + "label.png");
         toolLabel.addClass('tool-label');
         tool.append(toolLabel);
@@ -74,7 +75,8 @@ minecraft.initSidebar = function (){
         resource.addClass(minecraft.inventory[i]);
         resource.attr('id', minecraft.inventory[i]);
         label = $('<p>');
-        label.text(minecraft.counterArray[i]);
+        label.attr('id', "count" + minecraft.inventory[i]);
+        label.html(minecraft.counterArray[i]);
         resource.append(label);
         inventory.append(resource);
     }
@@ -101,18 +103,23 @@ minecraft.blockRemove = function (event){
 
     if (minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "dirt" 
     || minecraft.statusRemoveDirt == true && clicked.parentNode.dataset.name == "grass"){
-        console.log(minecraft.counterArray[0]);
-        var counter = parseInt(minecraft.counterArray[0])+1;
-        minecraft.counterArray[0] = counter;
+        minecraft.counterArray[0] = minecraft.counterArray[0]+1;
+        $('#countdirt').html(minecraft.counterArray[0]);
         $(clicked).css("background", "");
         $(clicked).removeClass("front dirt").addClass("mined");
         	
     } else if (minecraft.statusRemoveTree == true && clicked.parentNode.dataset.name == "tree" 
     || minecraft.statusRemoveTree == true && clicked.parentNode.dataset.name == "leaves"){
+        minecraft.counterArray[1] = minecraft.counterArray[1]+1;
+        $('#countleaves').html(minecraft.counterArray[1]);
+        minecraft.counterArray[3] = minecraft.counterArray[3]+1;
+        $('#counttree').html(minecraft.counterArray[3]);
         $(clicked).css("background", "");
         $(clicked).removeClass("front tree leaves").addClass("mined");
 
     } else if (minecraft.statusRemoveStone == true && clicked.parentNode.dataset.name == "stone"){
+        minecraft.counterArray[2] = minecraft.counterArray[2]+1;
+        $('#countstone').html(minecraft.counterArray[2]);
         $(clicked).css("background", "");
         $(clicked).removeClass("front stone").addClass("mined");
     } 
@@ -122,14 +129,18 @@ minecraft.blockRemove = function (event){
 minecraft.blockAdd = function (event){
     var clicked = event.target;
 
-    if (minecraft.statusPlaceDirt == true){
-        $(clicked).attr("class", "dirt");
-    } else if (minecraft.statusPlaceLeaves == true){
-        $(clicked).attr("class", "leaves");
-    } else if (minecraft.statusPlaceTree == true){
-        $(clicked).attr("class", "tree");
-    } else if (minecraft.statusPlaceStone == true){
-        $(clicked).attr("class", "stone");
+    if (minecraft.statusPlaceDirt == true && minecraft.counterArray[0] > 0){
+        minecraft.counterArray[0]= minecraft.counterArray[0]-1;
+        $(clicked).removeClass().addClass("dirt");
+    } else if (minecraft.statusPlaceLeaves == true && minecraft.counterArray[1] > 0){
+        minecraft.counterArray[1] = minecraft.counterArray[1]-1;
+        $(clicked).removeClass().addClass("leaves");
+    } else if (minecraft.statusPlaceTree == true && minecraft.counterArray[3] > 0){
+        minecraft.counterArray[3] = minecraft.counterArray[3]-1;
+        $(clicked).removeClass().addClass("tree");
+    } else if (minecraft.statusPlaceStone == true && minecraft.counterArray[2] > 0){
+        minecraft.counterArray[2] = minecraft.counterArray[2]-1;
+        $(clicked).removeClass().addClass("stone");
     }
 }
 
@@ -1069,17 +1080,39 @@ minecraft.initGrid = function (){
             var block = document.createElement('div');
             block.classList.add('block');
             block.dataset.name = item.name;
-            // block.style.backgroundImage = `url(${item.img})`;
 
             var front = document.createElement('div');
             front.classList.add('front');
             front.style.backgroundImage = `url(${item.img})`;
-            // var back = document.createElement('div');
-            // back.classList.add('back');
     
             grid.appendChild(block);
             block.appendChild(front);
-            // block.appendChild(back);
         })
     });
 }
+
+    // JQUERY CONVERSION ATTEMPT --- BUG WITH SETTING DATASET NAME ATTRIBUTE
+    // var game = $('#game');
+    // var grid = $('<section/>');
+    // grid.attr('class', 'grid');
+    // grid.attr('id', 'grid');
+    // game.append(grid);
+
+    // blockGrid.forEach(Array =>{
+    //     Array.forEach(item => {
+    //         var block = $('<div/>');
+    //         block.addClass('block');
+    //         block.data('name', `item.name`);
+    //         // block.style.backgroundImage = `url(${item.img})`;
+
+    //         var front = $('<div/>');
+    //         front.addClass('front');
+    //         front.css('backgroundImage', `url(${item.img})`);
+    //         // var back = document.createElement('div');
+    //         // back.classList.add('back');
+
+    //         grid.append(block);
+    //         block.append(front);
+    //         // block.appendChild(back);
+    //     })
+    // });

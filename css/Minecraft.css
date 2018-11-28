@@ -1,8 +1,8 @@
-/* *,
+*,
 *::before,
 *::after {
   box-sizing: border-box;
-} */
+}
 
 body {
   margin: 20px 0;
@@ -13,11 +13,13 @@ body {
   font-size: 20px;
   font-family: Helvetica, Arial, sans-serif;
 }
+
 #full-game {
   display: flex;
   justify-content: center;
   width: 87%;
 }
+
 /* ------------------------------- */
 /* -------- LANDING PAGE --------- */
 /* ------------------------------- */
@@ -44,7 +46,7 @@ body {
   border: 1px solid black;
   border-radius: 10px;
   font-size: 20px;
-  color: white;
+  color: black;
   position: absolute;
   top: 80%;
   left: 45%;
@@ -55,37 +57,44 @@ body {
 /* ------------------------------- */
 
 #sidebar {
-    flex-direction: column;
-    height: 500px;
-    justify-content: space-evenly;
-    width: 13vw;
-    background-color: black;
-    display: flex;
-    position: absolute;
-    align-items: center;
-    z-index: 1234;
-    margin-inline-start: 48%;
+  flex-direction: column;
+  height: 500px;
+  justify-content: space-evenly;
+  width: 13vw;
+  background-color: black;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  margin-inline-start: 48%;
 }
+
+.hidden {
+  visibility: hidden;
+}
+
 .tools {
-    background-size: contain;
-    flex-direction: column;
-    height: 15%;
-    align-items: center;
-    width: 10vh;
-    padding: 24%;
-    border-color: darkgrey;
-    background-color: black;
-    background-repeat: no-repeat;
+  background-size: contain;
+  flex-direction: column;
+  height: 15%;
+  align-items: center;
+  width: 10vh;
+  padding: 24%;
+  border-color: darkgrey;
+  background-color: black;
+  background-repeat: no-repeat;
 }
+
 .tool-label {
   transform: translateY(252%) translateX(7%);
   margin-left: -6px;
   height: 10px;
 }
+
 .inventory {
   height: 36%;
   width: 78%;
 }
+
 .resources {
   height: 27%;
   width: 42%;
@@ -93,6 +102,7 @@ body {
   margin: 4%;
   color: white;
 }
+
 p {
   margin-top: 143%;
 }
@@ -102,73 +112,61 @@ p {
   /* ------------------------------- */
   
 .grid {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    justify-content: space-evenly;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  justify-content: space-evenly;
 }
-  
+
+.block,
+.mined,
+.front {
+  height: 50px;
+  width: 50px;
+}
+
+.block,
+.front,
+.dirt,
+.stone,
+.leaves,
+.tree {
+  background-size: cover;
+}
+
 .block {
-    position: relative;
-    height: 50px;
-    width: 50px;
-    background-size: cover;
+  position: relative;
 }
-/* 
+
 .grid .block:hover {
   border: solid 1px yellow;
-} */
+  opacity: .8;
+}
 
 .mined {
-    /* visibility: hidden; */
-    position: absolute;
-    height: 50px;
-    width: 50px;
-    /* background-image: none; */
-    background-color: black;
+  position: absolute;
+  /* background-image: none; */
+  background-color: white;
 }
 
-.back,
 .front {
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    background-size: cover;
+  position: absolute;
 }
-/* .back {
-    background-color: black;
-} */
 
 .dirt {
-    /* position: relative;
-    /* height: 50px;
-    width: 50px; */
-    background-size: cover;
-    background-image: url("../img/dirt.png");
+  background-image: url("../img/dirt.png");
 }
 
 .stone {
-  /* position: relative;
-  height: 50px;
-  width: 50px; */
-  background-size: cover;
   background-image: url("../img/stone.png");
   }
 
 .leaves {
-  /* position: relative;
-  height: 50px;
-  width: 50px; */
-  background-size: cover;
   background-image: url("../img/leaves.png");
 }
 
 .tree {
-  /* position: relative;
-  height: 50px;
-  width: 50px; */
-  background-size: cover;
   background-image: url("../img/tree.png");
 }
 
@@ -179,39 +177,48 @@ p {
 @media only screen and (max-width: 640px) {
   .grid {
     max-width: 450px;
-  }  
+  }
+
   .block,
   .front,
   .back {
     height: 35px;
     width: 35px;
   }
+
   #sidebar {
     height: 350px;
     margin-inline-start: 50%;
   }
+
   .tools {
     width: 6vh;
   }
+
   .tool-label {
     height: 5px;
   }
+
   p {
     transform: translateY(153%);
     font-size: 10px;
   }
+
   .inventory {
     width: 80%;
   }
 }
+
 @media only screen and (max-width: 950px) and (min-width: 640px) {
   .grid {
     max-width: 700px;
   }
+
   .block {
     height: 35px;
     width: 35px;
   }
+
   #sidebar {
     height: 365px;
   }
